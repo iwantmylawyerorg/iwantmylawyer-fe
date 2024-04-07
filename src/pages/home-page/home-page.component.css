@@ -1,0 +1,53 @@
+.home-page{
+  display: grid;
+  grid-template-rows: [first] 120px [line2] auto;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-image: url("/assets/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-color: #F0EACF;
+}
+
+.text-area{
+  font-family: "Quicksand",sans-serif;
+  width: 100%;
+  text-align: center;
+  height: fit-content;
+
+}
+.text-area > button {
+  margin-top: 100px;
+  font-family: "Quicksand",sans-serif;
+  font-size: 25px;
+  background-color: #F9725A;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  width: 300px;
+  height: 50px;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.text-area > button:hover {
+  transform: scale(1.1);
+}
+.text-area > button:active {
+  background-color: #de5a43;
+}
+.text-area > p > a{
+  color: #306F74;
+}
+
+@media screen and (max-width: 500px) {
+  .text-area{
+    width: 100%;
+
+  }
+
+}
+
+
