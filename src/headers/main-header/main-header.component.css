@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 .header{
   display: inline-flex;
   position: absolute;
   align-items: center;
   justify-content: center;
+  z-index: 1;
   width: 100%;
 }
 .header > .logo{
@@ -113,11 +113,13 @@
 }
 .mobile-nav-holder.active > .slider-hr{
   display: block;
+  position: relative;
 
 }
+
 .mobile-nav-holder.active > .slider-logo {
   width: 10em;
-  margin-left: 10em;
+  margin-left: 33%;
   bottom: 0;
   justify-self: end;
   position: absolute;
@@ -152,24 +154,22 @@
 }
 
 @media screen and (max-width: 500px) {
-  .header > a{
+  .header > a {
     display: none;
   }
+
   .header > .logo {
     width: 100px;
   }
-  .hamburger{
+
+  .hamburger {
     display: block;
 
   }
-  @media screen and (max-width: 500px) {
-    .mobile-nav-holder.active{
-      width: 100%;
-    }
 
-
+  .mobile-nav-holder.active {
+    width: 100%;
   }
-
-
-
 }
+
+
