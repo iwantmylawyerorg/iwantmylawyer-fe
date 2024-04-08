@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePageComponent } from './HomePage.component';
+import { MinimalHeaderComponent } from './minimal-header.component';
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
+describe('MinimalHeaderComponent', () => {
+  let component: MinimalHeaderComponent;
+  let fixture: ComponentFixture<MinimalHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePageComponent]
+      imports: [MinimalHeaderComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(HomePageComponent);
+    
+    fixture = TestBed.createComponent(MinimalHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

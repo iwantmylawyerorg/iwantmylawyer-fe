@@ -1,9 +1,9 @@
 <div class="header">
-    <a href="/">POSTS</a>
-    <a href="/">LAWYERS</a>
+    <a routerLink="/posts">POSTS</a>
+    <a routerLink="/lawyers">LAWYERS</a>
     <img class="logo" alt="iwantmylawyer-logo" src="./assets/IwantMyLawyerLogo.png" />
-    <a href="/">LOG IN</a>
-    <a href="/">SIGN UP</a>
+    <a routerLink="/login">LOG IN</a>
+    <a routerLink="/signup">SIGN UP</a>
     <button class="hamburger" (click)="handleHam()" [ngClass]="{'active': hamActive}">
       <div class="bar"></div>
     </button>
@@ -11,13 +11,13 @@
       <div (click)="handleHam()"  class="mobile-nav-background" [ngClass]="{'active': hamActive}"></div>
       <div class="mobile-nav-holder" [ngClass]="{'active': hamActive}">
         <nav class= "mobile-page-nav">
-          <li><a href='/'>POSTS</a></li>
-          <li><a href='/'>LAWYERS</a></li>
+          <li><a routerLink="/posts">POSTS</a></li>
+          <li><a routerLink="/lawyers">LAWYERS</a></li>
         </nav>
         <hr class = 'slider-hr'/>
         <nav class = 'mobile-auth-nav'>
-          <li><a href='/'>SIGN UP</a></li>
-          <li><a href='/'>LOGIN</a></li>
+          <li><a routerLink="/signup">SIGN UP</a></li>
+          <li><a routerLink="/login">LOGIN</a></li>
         </nav>
         <img class='slider-logo' alt='iwantmylawyer-logo' src='./assets/IwantMyLawyerLogo.png' />
     </div>

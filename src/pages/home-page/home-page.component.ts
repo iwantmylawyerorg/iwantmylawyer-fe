@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import {MainHeaderComponent} from "../../headers/main-header/main-header.component";
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-HomePage',
   standalone: true,
   imports: [
     MainHeaderComponent
   ],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  templateUrl: './HomePage.component.html',
+  styleUrl: './HomePage.component.css'
 })
 export class HomePageComponent {
 
