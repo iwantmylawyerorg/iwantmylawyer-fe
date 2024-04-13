@@ -1,0 +1,32 @@
+.login{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color:#DED4C4 ;
+}
+.login-container{
+  width: 50vw;
+  height: 100vh;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-form-holder{
+  width: 25vw;
+  height: 60vh;
+  background-color: white;
+
+}
+.content-holder{
+  display: inline-flex;
+}
+.image-container{
+  display: flex;
+  width: 50vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.image-container > img {
+  width: 450px;
+}

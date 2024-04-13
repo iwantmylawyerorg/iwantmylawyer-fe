@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import {MainHeaderComponent} from "../../headers/main-header/main-header.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-HomePage',
+  selector: 'app-home-page',
   standalone: true,
   imports: [
-    MainHeaderComponent
+    MainHeaderComponent,
+    RouterLink
   ],
-  templateUrl: './HomePage.component.html',
-  styleUrl: './HomePage.component.css'
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
 
