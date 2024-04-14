@@ -7,10 +7,7 @@
 .row{
   margin-top: 100px;
 }
-html,
-body {
-  height: 100%;
-}
+
 
 .form-signin {
   max-width: 500px;
@@ -35,7 +32,10 @@ input:focus ~ label {
   margin-bottom: 10px;
 }
 .login-text{
-
+  font-family: "Quicksand", sans-serif;
+}
+.login-form > img:hover{
+  cursor: pointer;
 }
 .form-floating{
   margin-top: 20px;
@@ -52,6 +52,15 @@ input:focus ~ label {
   color: white;
   margin-top: 10px;
   border-radius: 25px;
+  font-family: "Quicksand", sans-serif;
+}
+.btn-color:hover{
+  transform: scale(1.1);
+}
+.btn-color:active{
+  background-color: #de5a43;
+  border: none;
+  color: white;
 }
 input{
   border: 2px solid black;

@@ -38,6 +38,9 @@
 .text-area > button:active {
   background-color: #de5a43;
 }
+.text-area > p {
+  margin-top: 15px;
+}
 .text-area > p > a{
   color: #306F74;
 }

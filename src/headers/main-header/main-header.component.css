@@ -10,14 +10,11 @@
   width: 150px;
 }
 .header > a {
-  color: #3E3232;
+  color: black;
   text-decoration: none;
   font-family: "Quicksand",sans-serif;
   margin-right: 30px;
   margin-left: 30px;
-}
-.header > a:hover {
-  color: #503C3C;
 }
 .header > a:active{
   transform: scale(0.9);

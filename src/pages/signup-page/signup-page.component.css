@@ -1,0 +1,79 @@
+.sign-up{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(0deg, rgba(42,41,36,1) 29%, rgba(29,15,9,1) 71%);
+}
+.sign-up-container{
+  height: 100vh;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.banner{
+  height: 100vh;
+  background-image: url("/assets/law-table-blur.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.dark-filter{
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+
+.text-area{
+  height: 30vh;
+  width: 34vw;
+  background-color: rgba(65, 63, 63, 0.5);
+  color:white;
+  font-family: "Quicksand", sans-serif;
+}
+.text-area > h4 {
+  color: #F9725A;
+}
+
+.icon-box{
+  margin-top: -20px;
+  flex-wrap: nowrap;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-holder{
+  padding-top:5px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  color: #2C6A6D;
+  display: flex;
+  height: 95px;
+  width: 125px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+.active{
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: rgba(255, 255, 255, 0.4);
+}
+.icon-holder:hover{
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: rgba(255, 255, 255, 0.3);
+}
+.dynamic-form-holder{
+  width: 100vw;
+
+}
+
+.logo:hover{
+  cursor: pointer;
+}
+

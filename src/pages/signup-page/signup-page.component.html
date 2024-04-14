@@ -1,1 +1,37 @@
-<p>signup-page works!</p>
+<div class="sign-up">
+  <div class="row g-0">
+    <div class="col-md-8">
+      <div class="sign-up-container  text-center">
+        <img class="mb-4 logo" routerLink="" alt="IwantMyLawyerLogo" src="./assets/IwantMyLawyerLogo.png" width="100" height="100">
+        <div class="icon-box">
+          <div (click)="clientSignUpClicked()" class="icon-holder" [ngClass]="{'active':signUpType == 'Client'}"  >
+            <img class="mb-2" alt="user-icon" src="./assets/user-icon.png" width="40" height="40">
+            <p>User Sign Up</p>
+          </div>
+          <div (click)="lawyerSignUpClicked()"  class="icon-holder" [ngClass]="{'active':signUpType == 'Lawyer'}">
+            <img class="mb-2" alt="lawyer-icon" src="./assets/lawyer-icon.png" width="40" height="40">
+            <p>Lawyer Sign Up</p>
+          </div>
+        </div>
+        @if(signUpType == 'Client'){
+          <app-client-sign-up-form/>
+        }
+        @else{
+          <app-lawyer-sign-up-form/>
+        }
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="banner">
+        <div class="dark-filter align-content-center">
+          <div class="text-area text-center align-content-center">
+            <h2>Don't Have an Account Yet?</h2>
+            <h4>Sign Up for Free!</h4>
+            <p>Chat With AI Lawyer, Learn From Real Professionals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
