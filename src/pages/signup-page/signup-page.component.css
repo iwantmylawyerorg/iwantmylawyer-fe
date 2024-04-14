@@ -24,7 +24,8 @@
 }
 
 .text-area{
-  height: 30vh;
+  height: auto;
+  min-height: 30vh;
   width: 34vw;
   background-color: rgba(65, 63, 63, 0.5);
   color:white;
@@ -46,7 +47,7 @@
   padding-top:5px;
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
-  color: #2C6A6D;
+  color: black;
   display: flex;
   height: 95px;
   width: 125px;
@@ -73,7 +74,12 @@
 
 }
 
-.logo:hover{
+.logo:hover {
   cursor: pointer;
+}
+@media screen and (max-width: 600px){
+  .sign-up-container{
+    border-radius: 0;
+  }
 }
 
