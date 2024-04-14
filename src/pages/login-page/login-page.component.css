@@ -4,29 +4,59 @@
   position: fixed;
   background-color:#DED4C4 ;
 }
-.login-container{
-  width: 50vw;
-  height: 100vh;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.row{
+  margin-top: 100px;
 }
-.login-form-holder{
-  width: 25vw;
-  height: 60vh;
-  background-color: white;
+html,
+body {
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 500px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+input:focus {
+  border-color: black;
+  box-shadow: 0 0 0 0.2rem rgb(0, 0, 0,0.5);
+}
+input:focus ~ label {
+  color: black;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+}
+.login-text{
 
 }
-.content-holder{
-  display: inline-flex;
+.form-floating{
+  margin-top: 20px;
 }
-.image-container{
-  display: flex;
-  width: 50vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+.form-control{
+  border-radius: 10px;
+  background-color: transparent;
 }
-.image-container > img {
-  width: 450px;
+.login-form{
+  text-align: center;
 }
+.btn-color{
+  background-color: #F9725A;
+  color: white;
+  margin-top: 10px;
+  border-radius: 25px;
+}
+input{
+  border: 2px solid black;
+}
+
+
+
+
