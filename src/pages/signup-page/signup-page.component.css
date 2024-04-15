@@ -19,14 +19,13 @@
 }
 .dark-filter{
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100vw;
   height: 100vh;
 }
 
 .text-area{
   height: auto;
   min-height: 30vh;
-  width: 34vw;
+  width: 100%;
   background-color: rgba(65, 63, 63, 0.5);
   color:white;
   font-family: "Quicksand", sans-serif;

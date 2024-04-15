@@ -1,7 +1,7 @@
 <div class="sign-up">
   <div class="row g-0">
     <div class="col-md-8">
-      <div class="sign-up-container  text-center">
+      <div class="sign-up-container container justify-content-center text-center">
         <img class="mb-4 logo" routerLink="" alt="IwantMyLawyerLogo" src="./assets/IwantMyLawyerLogo.png" width="100" height="100">
         <div class="icon-box">
           <div (click)="clientSignUpClicked()" class="icon-holder" [ngClass]="{'active':signUpType == 'Client'}"  >
@@ -13,6 +13,7 @@
             <p>Lawyer Sign Up</p>
           </div>
         </div>
+        <br>
         @if(signUpType == 'Client'){
           <app-client-sign-up-form/>
         }

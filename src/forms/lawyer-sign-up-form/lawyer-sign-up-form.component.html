@@ -1,5 +1,82 @@
-<div class="from-container">
-  <form class="signup-form">
-    <p>lawyer sign up</p>
+<main class="form-signup w-100">
+  <form class="signup-form align-items-center m-auto">
+    <div class="row row-gap">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingName" placeholder="Martin">
+          <label for="floatingName">Name</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingLastName" placeholder="Davis">
+          <label for="floatingLastName">Last Name</label>
+        </div>
+      </div>
+    </div>
+    <div class="row row-gap">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+          <label for="floatingEmail">Email</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+      </div>
+    </div>
+    <div class="row row-gap">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="tel" class="form-control" id="floatingTelNo" placeholder="5422022222">
+          <label for="floatingTelNo">Tel-No</label>
+        </div>
+      </div>
+      <div class="col-md-6 align-content-center">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingTcNo" placeholder="Tc No" >
+          <label for="floatingTcNo">Tc No</label>
+        </div>
+      </div>
+    </div>
+    <div class="row row-gap">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingBarNo" placeholder="Bar No">
+          <label for="floatingBarNo">Bar No</label>
+        </div>
+      </div>
+      <div class="col-md-6 align-content-center">
+        <select class="form-select custom-select py-3" aria-label="City select">
+          <option selected>Ankara</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+    <div class="row row-gap">
+      <div class="col-md-6 align-content-center">
+        <div class="form-check">
+          <input (click)="handleButtonStatus()" class="form-check-input"  type="checkbox" id="conditions">
+          <label >I agree to IWantMyLawyer’s <a href="">Terms of Service</a> and <a href="">Privacy Policy.</a></label>
+        </div>
+      </div>
+      <div class="col-md-6 align-content-center">
+        <button class="btn custom-btn w-50 py-2" [disabled]="!agreedToTerms"  type="submit">Submit</button>
+      </div>
+    </div>
   </form>
-</div>
+</main>
