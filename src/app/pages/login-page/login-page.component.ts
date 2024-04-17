@@ -10,7 +10,7 @@ import {MinimalHeaderComponent} from "../../headers/minimal-header/minimal-heade
   imports: [
     MinimalHeaderComponent,
     NgStyle,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
