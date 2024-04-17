@@ -1,0 +1,43 @@
+.ai-lawyer-img{
+  position: fixed;
+  width: 130px;
+  right: 50px;
+  bottom: 0;
+  transition: ease-in-out 500ms;
+}
+
+.ai-lawyer-img:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.custom-dialog{
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  background:linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
+}
+.conversation-box{
+  width: 500px;
+  height: 300px;
+  overflow-y: scroll;
+}
+.speech{
+  padding-top:10px;
+  padding-left: 10px;
+  margin-top: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: #243342;
+}
+.input-group-append > button {
+  border-bottom-left-radius:0;
+  border-top-left-radius: 0;
+  border: 1px solid white;
+  color: white;
+}
+.form-control:focus{
+  box-shadow: none;
+}
+.input-group-append > button:active {
+  transform: scale(0.95);
+}
