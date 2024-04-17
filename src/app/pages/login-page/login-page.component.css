@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 .login-page{
   width: 100vw;
   height: 100vh;
   position: fixed;
-
 }
 
 /*=============== BASE ===============*/
@@ -28,7 +26,6 @@ img {
 .login {
   position: relative;
   height: 100vh;
-  border-radius: 25px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -97,12 +94,12 @@ img {
 .login__input {
   width: 100%;
   background: none;
-  color: hsl(0, 0%, 100%);;
+  color: white;
   padding-block: 1rem;
 }
 
 .login__input::placeholder {
-  color: hsl(0, 0%, 100%);;
+  color: white;
 }
 
 .login__box i {
@@ -128,11 +125,11 @@ img {
 .login__check-input {
   width: 1rem;
   height: 1rem;
-  accent-color: hsl(0, 0%, 100%);;
+  accent-color: white;
 }
 
 .login__forgot {
-  color: hsl(0, 0%, 100%);;
+  color: white;
 }
 
 .login__forgot:hover {
@@ -142,9 +139,9 @@ img {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: hsl(0, 0%, 100%);;
+  background-color: #F9725A;
   border-radius: 4rem;
-  color: hsl(0, 0%, 0%);;
+  color: white;
   font-weight: 500;
   cursor: pointer;
 }
@@ -155,7 +152,7 @@ img {
 }
 
 .login__register a {
-  color: hsl(0, 0%, 100%);;
+  color: white;
   font-weight: 500;
 }
 

@@ -9,6 +9,9 @@
 .header > .logo{
   width: 150px;
 }
+.header > .logo:hover{
+  cursor: pointer;
+}
 .header > a {
   color: black;
   text-decoration: none;
