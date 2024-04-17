@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {NgClass} from "@angular/common";
+import { trigger, transition, style, animate } from '@angular/animations';
 import {ClientSignUpFormComponent} from "../../forms/client-sign-up-form/client-sign-up-form.component";
 import {LawyerSignUpFormComponent} from "../../forms/lawyer-sign-up-form/lawyer-sign-up-form.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 
 @Component({

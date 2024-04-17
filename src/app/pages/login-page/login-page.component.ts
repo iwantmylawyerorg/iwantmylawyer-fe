@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {MinimalHeaderComponent} from "../../headers/minimal-header/minimal-header.component";
+
 import {NgStyle} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {MinimalHeaderComponent} from "../../headers/minimal-header/minimal-header.component";
 
 @Component({
   selector: 'app-login-page',

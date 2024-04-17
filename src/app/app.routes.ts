@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import {HomePageComponent} from "../pages/home-page/home-page.component";
-import {LoginPageComponent} from "../pages/login-page/login-page.component";
-import {SignupPageComponent} from "../pages/signup-page/signup-page.component";
-import {PostsPageComponent} from "../pages/posts-page/posts-page.component";
-import {LawyersPageComponent} from "../pages/lawyers-page/lawyers-page.component";
+import {HomePageComponent} from "./pages/home-page/home-page.component";
+import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
+import {PostsPageComponent} from "./pages/posts-page/posts-page.component";
+import {LawyersPageComponent} from "./pages/lawyers-page/lawyers-page.component";
+
 
 
 

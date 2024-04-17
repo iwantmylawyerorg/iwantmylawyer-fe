@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {MainHeaderComponent} from "../../headers/main-header/main-header.component";
+
 import {RouterLink} from "@angular/router";
+import {MainHeaderComponent} from "../../headers/main-header/main-header.component";
 
 @Component({
   selector: 'app-home-page',
