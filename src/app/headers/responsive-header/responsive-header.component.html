@@ -1,0 +1,27 @@
+<div class="header" [ngClass]="{'sticky': isSticky}">
+  <img class="logo" alt="iwantmylawyer-logo" src="/assets/IwantMyLawyerLogo.png" routerLink="" />
+  <div class="container link-holder text-end">
+    <a routerLink="/posts">POSTS</a>
+    <a routerLink="/lawyers">LAWYERS</a>
+    <a routerLink="/login">LOG IN</a>
+    <a routerLink="/signup">SIGN UP</a>
+  </div>
+  <button class="hamburger" (click)="handleHam()" [ngClass]="{'active': hamActive}">
+    <div class="bar"></div>
+  </button>
+  <div class="hamburger-slider">
+    <div (click)="handleHam()"  class="mobile-nav-background" [ngClass]="{'active': hamActive}"></div>
+    <div class="mobile-nav-holder" [ngClass]="{'active': hamActive}">
+      <nav class= "mobile-page-nav">
+        <li><a routerLink="/posts">POSTS</a></li>
+        <li><a routerLink="/lawyers">LAWYERS</a></li>
+      </nav>
+      <hr class = 'slider-hr'/>
+      <nav class = 'mobile-auth-nav'>
+        <li><a routerLink="/signup">SIGN UP</a></li>
+        <li><a routerLink="/login">LOGIN</a></li>
+      </nav>
+      <img class='slider-logo' alt='iwantmylawyer-logo' src='../../../assets/IwantMyLawyerLogo.png' />
+    </div>
+  </div>
+</div>

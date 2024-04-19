@@ -1,0 +1,46 @@
+.lawyers-page{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+
+.text-area{
+  font-family: "Quicksand", sans-serif;
+  height: 60vh;
+  color: white;
+  border: 1px solid transparent;
+  background: url("/assets/justice-woman.png") no-repeat;
+  background-size: cover;
+}
+.dark-filter {
+  padding-bottom:20px;
+  padding-top: 20px;
+  min-height: 25vh;
+  margin-top: 25vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dark-filter > h3 {
+  color: #F9725A;
+}
+.filter{
+  background-color: #c5c5c5;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+.filter-slide{
+  height: 0;
+  width: 100%;
+  display: none;
+  background-color: #a6a6a6;
+  transition: 500ms ease-in-out;
+}
+.lawyer-card-holder{
+  padding-bottom: 30px;
+}
+
+.active{
+  height: 10vh;
+  display: block;
+}
+

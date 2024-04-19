@@ -1,1 +1,33 @@
-<p>lawyers-page works!</p>
+<div class="lawyers-page">
+  <app-responsive-header/>
+  <div class="text-area text-center">
+    <div class="dark-filter text-center">
+      <h1>LAWYERS</h1>
+      <h3>All real professionals</h3>
+      <p>Learn about and contact the lawyer you need. Check out the recent articles,posts and much more. </p>
+    </div>
+  </div>
+  <div (click)="handleFilter()"  class="filter text-center">
+    <i class="ri-expand-up-down-line"></i>
+  </div>
+  <div class="filter-slide d-inline-flex align-content-center" [ngClass]="{'active':filterActive}"></div>
+  <div class="container lawyer-card-holder">
+    <div class="row">
+      <div class="col-md-4">
+        <app-lawyer-card/>
+      </div>
+      <div class="col-md-4">
+        <app-lawyer-card/>
+      </div>
+      <div class="col-md-4">
+      <app-lawyer-card/>
+    </div>
+      <div class="col-md-4">
+        <app-lawyer-card/>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
