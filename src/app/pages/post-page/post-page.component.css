@@ -1,0 +1,35 @@
+.example-card {
+  max-width: 400px;
+  margin: 100px;
+  padding: 20px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.postimage {
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  flex-direction: column;
+  overflow: scroll;
+  max-height: 100vh;
+}
+
+.posts .example-card:first-child {
+  margin-top: 110rem!important;
+}
+
+mat-card {
+  margin: 0 !important;
+  width: fit-content;
+  height: fit-content;
+}
