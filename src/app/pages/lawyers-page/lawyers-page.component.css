@@ -32,15 +32,29 @@
   height: 0;
   width: 100%;
   display: none;
-  background-color: #a6a6a6;
+  background-color: white;
   transition: 500ms ease-in-out;
 }
+.filter-slide.active{
+  padding-top: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-control{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.filter-slide > i {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .lawyer-card-holder{
+  margin-top: 20px;
   padding-bottom: 30px;
 }
 
-.active{
-  height: 10vh;
-  display: block;
-}
+
 

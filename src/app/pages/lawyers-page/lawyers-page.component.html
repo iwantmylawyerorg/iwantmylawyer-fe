@@ -3,14 +3,25 @@
   <div class="text-area text-center">
     <div class="dark-filter text-center">
       <h1>LAWYERS</h1>
-      <h3>All real professionals</h3>
+      <h3>All Real Professionals</h3>
       <p>Learn about and contact the lawyer you need. Check out the recent articles,posts and much more. </p>
     </div>
   </div>
   <div (click)="handleFilter()"  class="filter text-center">
     <i class="ri-expand-up-down-line"></i>
   </div>
-  <div class="filter-slide d-inline-flex align-content-center" [ngClass]="{'active':filterActive}"></div>
+  <div class="row filter-slide" [ngClass]="{'active':filterActive}">
+    <div class="col col-md-2">
+        <input type="text" class="form-control" id="lawyer-name" aria-describedby="lawyernamesearch" placeholder="lawyer name">
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" id="lawyer-last-name" placeholder="lawyer last name">
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" id="lawyer-city" placeholder="city">
+    </div>
+
+  </div>
   <div class="container lawyer-card-holder">
     <div class="row">
       <div class="col-md-4">
@@ -27,7 +38,6 @@
       </div>
 
     </div>
-
   </div>
-
+  <app-ailawyer/>
 </div>

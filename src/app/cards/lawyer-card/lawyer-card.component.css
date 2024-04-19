@@ -1,6 +1,6 @@
 .lawyer-card{
   min-width: 25vw;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .lawyer-card:hover{
@@ -9,22 +9,30 @@
 
 .card-img-overlay{
   overflow: hidden;
-  height: 50px;
+  top: 80%;
   background-color: rgba(0, 0, 0, 0.5);
   transition: 500ms ease-in-out;
   backdrop-filter: blur(10px);
 }
-.lawyer-card:hover > .card-img-overlay{
-  height: 100%;
-
-}
 .row{
   margin-top: 20px;
+  display: none;
+}
+.lawyer-card:hover > .card-img-overlay{
+  top: 50%;
+}
+.lawyer-card:hover .row {
+   display: block;
 }
 i{
   font-size: 1.2rem;
 }
+h5{
+  font-family: "Quicksand", sans-serif;
+}
 p{
+  font-family: "Quicksand", sans-serif;
   margin-left: 5px;
   font-size: 1.2rem;
 }
+
