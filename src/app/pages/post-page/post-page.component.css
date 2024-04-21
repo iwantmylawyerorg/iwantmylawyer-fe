@@ -1,5 +1,5 @@
 .example-card {
-  max-width: 400px;
+  width: 500px;
   margin: 100px;
   padding: 20px;
 }
@@ -11,25 +11,19 @@
 
 .postimage {
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .posts {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  flex-direction: column;
   overflow: scroll;
   max-height: 100vh;
 }
-
-.posts .example-card:first-child {
-  margin-top: 110rem!important;
+.example-card:hover{
+  cursor: pointer;
 }
 
+
 mat-card {
-  margin: 0 !important;
+  margin: 20px !important;
   width: fit-content;
-  height: fit-content;
 }

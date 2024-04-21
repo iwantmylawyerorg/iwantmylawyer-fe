@@ -4,23 +4,25 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar><img src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
-    <mat-nav-list style="margin-top: 70px;">
-      <a mat-list-item href="#">HOME</a>
-      <a mat-list-item href="#">LAWYERS</a>
-      <a mat-list-item href="#">POST</a>
-      <a mat-list-item href="#">LOGIN</a>
-      <a mat-list-item href="#">SIGNUP</a>
+    <mat-nav-list style="margin-top: 70px; color:white; ">
+        <a mat-list-item href="#">HOME</a>
+        <a mat-list-item href="#">LAWYERS</a>
+        <a mat-list-item href="#">POST</a>
+        <a mat-list-item href="#">LOGIN</a>
+        <a mat-list-item href="#">SIGNUP</a>
     </mat-nav-list>
+    <div class="wrapper">
+      <img src="https://i.kinja-img.com/gawker-media/image/upload/gd8ljenaeahpn0wslmlz.jpg" class="image--cover">
+    </div>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <img src="assets/law-table.png" style="display: inline" alt="image" class="login__bg">
+  <mat-sidenav-content class="content">
       @if (isHandset$ | async) {
         <button
           type="button"
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon"><fa-icon [icon]="faHeart"></fa-icon></mat-icon>
+          <mat-icon aria-label="Side nav toggle icon"><fa-icon class="icon" [icon]="faHeart"></fa-icon></mat-icon>
         </button>
       }
     <app-post-page></app-post-page>

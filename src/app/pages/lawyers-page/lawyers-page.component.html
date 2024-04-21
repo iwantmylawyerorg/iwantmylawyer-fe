@@ -7,21 +7,34 @@
       <p>Learn about and contact the lawyer you need. Check out the recent articles,posts and much more. </p>
     </div>
   </div>
-  <div (click)="handleFilter()"  class="filter text-center">
-    <i class="ri-expand-up-down-line"></i>
-  </div>
-  <div class="row filter-slide" [ngClass]="{'active':filterActive}">
-    <div class="col col-md-2">
-        <input type="text" class="form-control" id="lawyer-name" aria-describedby="lawyernamesearch" placeholder="lawyer name">
-    </div>
-    <div class="col col-md-2">
-        <input type="text" class="form-control" id="lawyer-last-name" placeholder="lawyer last name">
-    </div>
-    <div class="col col-md-2">
-        <input type="text" class="form-control" id="lawyer-city" placeholder="city">
-    </div>
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Search Lawyer
+        </mat-panel-title>
+        <mat-panel-description>
+           Search by credentials
+          <fa-icon class="icon" [icon]="searchIcon"> </fa-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="container text-center">
+        <mat-form-field>
+          <mat-label>Lawyer name</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-  </div>
   <div class="container lawyer-card-holder">
     <div class="row">
       <div class="col-md-4">

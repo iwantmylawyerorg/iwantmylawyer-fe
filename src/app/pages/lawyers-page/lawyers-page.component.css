@@ -22,31 +22,6 @@
 .dark-filter > h3 {
   color: #F9725A;
 }
-.filter{
-  background-color: #c5c5c5;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-}
-.filter-slide{
-  height: 0;
-  width: 100%;
-  display: none;
-  background-color: white;
-  transition: 500ms ease-in-out;
-}
-.filter-slide.active{
-  padding-top: 10px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.form-control{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .filter-slide > i {
   font-size: 1.5rem;
   font-weight: bold;
@@ -55,6 +30,15 @@
   margin-top: 20px;
   padding-bottom: 30px;
 }
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
 
 
 

@@ -50,21 +50,15 @@
         </div>
       </div>
       <div class="col-md-6 align-content-center">
-        <select class="form-select custom-select py-3" aria-label="City select">
-          <option selected>Ankara</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <mat-form-field style="background-color: white" class="city-picker">
+          <mat-label>City</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+            @for (state of cities; track state) {
+              <mat-option [value]="state">{{state}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <div class="row row-gap">

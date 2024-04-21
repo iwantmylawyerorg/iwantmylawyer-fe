@@ -47,7 +47,9 @@ input:focus > label {
   color: black;
   font-weight: bold;
 }
-
+.city-picker{
+  width: 100%;
+}
 
 @media screen and (max-width:600px){
   .row-gap{

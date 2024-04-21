@@ -8,9 +8,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {PostPageComponent} from "../../pages/post-page/post-page.component";
+import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 
 @Component({
   selector: 'app-sidebar',
@@ -29,7 +29,7 @@ import {PostPageComponent} from "../../pages/post-page/post-page.component";
   ]
 })
 export class SidebarComponent {
-  faHeart = faHeart;
+  faHeart = faBars;
 
   private breakpointObserver = inject(BreakpointObserver);
 
