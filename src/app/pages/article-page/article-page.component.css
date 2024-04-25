@@ -1,0 +1,227 @@
+* {
+    box-sizing: border-box;
+    transition: 0.3s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.vert-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.horz-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.rela-block {
+    display: block;
+    position: relative;
+}
+.rela-inline {
+    display: inline-block;
+    position: relative;
+}
+.left {
+    position: relative;
+    float: left;
+}
+.right {
+    position: relative;
+    float: right;
+}
+body {
+    transition: 0s;
+    font-family: 'PT Sans', Helvetica, sans-serif;
+    color: #383838;
+    font-size: 17px;
+}
+h1 {
+    font-family: 'Playfair Display', Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 40px 0;
+}
+h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 26px;
+    margin: 40px 0 30px;
+}
+h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+h4 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+h4::before, h4::after {
+    content: ' --- ';
+}
+h5, h6 {
+    color: #999;
+    margin-bottom: 20px;
+}
+b {
+    font-weight: 700;
+}
+i {
+    font-style: italic;
+}
+a {
+    text-decoration: underline;
+    color: #95a5f5;
+}
+pre {
+    padding: 12px 20px;
+    background-color: #e5e5e5;
+    margin: 20px 20px 40px;
+    font-family: monospace;
+    text-align: justify;
+    white-space: normal;
+    border-radius: 2px;
+}
+p {
+    margin-bottom: 40px;
+    line-height: 28px;
+    padding: 0 20px;
+}
+blockquote {
+    margin: 40px 20px;
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+    text-align: center;
+    padding: 20px 40px;
+    color: #7785a1;
+    font-style: italic;
+    font-size: 20px;
+}
+blockquote::before, blockquote::after {
+    content: '"';
+}
+ul {
+    padding: 0 40px;
+    line-height: 28px;
+    margin-bottom: 40px;
+}
+ul li::before {
+    content: "• ";
+}
+.gutter-container {
+    margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1200px;
+    overflow-y: auto;
+}
+.page-container {
+    min-height: 100vh;
+    background-color: #f7f8f9;
+    padding-top: 120px;
+}
+.nav-bar {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 11px -1px rgba(0,0,0,0.2);
+    text-align: center;
+}
+.nav-bar .progress-bar, .nav-bar .progress-bar-back {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 3px;
+}
+.nav-bar .progress-bar.inactive, .nav-bar .progress-bar-back.inactive {
+    background-color: transparent;
+}
+.nav-bar .progress-bar-back {
+    width: 100%;
+    background: #e5e5e5;
+}
+.nav-bar .progress-bar {
+    background: #53697c;
+    transition: 0.5s cubic-bezier(0, 0, 0.24, 1);
+}
+.header {
+    font-family: 'Playfair Display', Helvetica, sans-serif;
+    font-size: 44px;
+    margin: 0 20px 20px;
+    letter-spacing: 2px;
+    color: #ccc;
+}
+.article-container {
+    margin: 0 auto 60px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.author-pic {
+    height: 54px;
+    width: 54px;
+    margin-right: 10px;
+    background-color: #e5e5e5;
+    border-radius: 4px;
+    vertical-align: top;
+}
+.author-pic img {
+    height: 54px;
+    width: 54px;
+    border-radius: 4px;
+    vertical-align: top;
+}
+.article-pic {
+    background: url("https://source.unsplash.com/random/1920x1080") center no-repeat;
+    background-size: cover;
+    height: 300px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+}
+.article-info {
+    margin-bottom: 40px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.article-info div {
+    margin-bottom: 2px;
+}
+.article-info span {
+    color: #999;
+    font-style: italic;
+}
+.article-footnote {
+    margin-top: 40px;
+    padding: 20px 20px 0;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+}
+.article-footnote span {
+    color: #999;
+    font-style: italic;
+}
+.footer {
+    background-color: #e5e5e5;
+    color: #383838;
+    padding: 30px;
+    text-align: center;
+}
+.new-article-button {
+    margin-left: auto;
+    position: fixed;
+    right: 20px;
+    top: 70%;
+}

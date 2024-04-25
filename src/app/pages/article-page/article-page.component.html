@@ -1,0 +1,37 @@
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|PT+Sans:400,400i,700" rel="stylesheet">
+
+<!-- PAGE STUFF -->
+<div id="app">
+    <div class="rela-block page-container">
+        <div class="rela-block nav-bar">
+            <div class="rela-block gutter-container">nav</div>
+            <!-- Progress bar -->
+            <div class="progress-bar-back"></div>
+            <div class="progress-bar" :style="{'width':progress+'%'}"></div>
+        </div>
+        <div class="rela-block gutter-container">
+            <div class="header">/Article/</div>
+            <div class="rela-block article-container">
+                <div class="rela-block article-info">
+                    <div class="rela-inline author-pic">
+                        <img src="/assets/lawyer-photo.jpg" alt="">
+                    </div>
+                    <div class="rela-inline author-info">
+                        <div class="rela-block">Author Name</div>
+                        <div class="rela-block"><span>Author info here</span></div>
+                        <div class="rela-block"><span>Article date</span></div>
+                    </div>
+                </div>
+                <div class="rela-block article-pic"></div>
+                <div [innerHTML]="articleText" class="rela-block"></div>
+                <button class="btn btn-primary new-article-button" [routerLink]="['/create-article']">+Yeni Makale</button>                <div class="rela-block article-footnote">
+                    <span>Footnote for links or whatever here</span>
+                </div>
+            </div>
+        </div>
+        <div class="rela-block footer">
+            <div class="rela-block">footer</div>
+        </div>
+    </div>
+</div>
