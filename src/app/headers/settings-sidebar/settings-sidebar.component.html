@@ -1,0 +1,124 @@
+<mat-sidenav-container class="sidenav-container sidebar">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar><img alt="logo" routerLink="" class="logo" src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
+    <mat-nav-list style="margin-top: 70px; color:white; ">
+      <a mat-list-item (click)="chooseForm('ActivateAccount')">ACTIVATE ACCOUNT</a>
+      <a mat-list-item (click)="chooseForm('AboutMe')">ABOUT ME</a>
+      <a mat-list-item (click)="chooseForm('ContactInfo')">CONTACT INFO</a>
+    </mat-nav-list>
+    <div class="wrapper">
+      <img src="/assets/lawyer-photo.jpg" class="image--cover">
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    @if (isHandset$ | async) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon"><fa-icon class="icon" [icon]="faHeart"></fa-icon></mat-icon>
+      </button>
+    }
+      <div class="header-holder text-center align-content-center">
+          <h1>Account Settings</h1>
+      </div>
+      @if(chosenForm == "ActivateAccount"){
+        <div class="container align-content-center stepper-holder">
+          <mat-stepper
+            class="example-stepper"
+            [orientation]="(stepperOrientation | async)!">
+            <mat-step [stepControl]="firstFormGroup" label="Fill out your Tc number">
+              <form [formGroup]="firstFormGroup">
+                <mat-form-field>
+                  <mat-label>Tc No</mat-label>
+                  <input matInput placeholder="Tc No" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" label="Fill out your Bar no">
+              <form [formGroup]="secondFormGroup">
+                <mat-form-field>
+                  <mat-label>Bar no</mat-label>
+                  <input matInput formControlName="secondCtrl" placeholder="Ex. 568975"
+                         required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step label="Upload Lawyer Card Photo">
+              <form>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="inputGroupFile02">
+                  <button type="submit" class="btn btn-file-custom">Upload</button>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step label="Upload Tc Photo">
+              <form>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="inputGroupFile03">
+                  <button type="submit" class="btn btn-file-custom">Upload</button>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step label="Upload Lawyer Photo">
+              <form>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="inputGroupFile04">
+                  <button type="submit" class="btn btn-file-custom">Upload</button>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+              </div>
+            </mat-step>
+          </mat-stepper>
+        </div>
+      } @else if (chosenForm == "AboutMe"){
+        <div class="container about-me-holder">
+          <div class="row justify-content-md-center">
+            <div class="col col-md-6">
+              <div class="about-me-container mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label custom-label">About Me</label>
+                <textarea class="about-me-text-area form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="justify-content-center text-center">
+                    <button type="submit" class="btn btn-custom">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @else if (chosenForm == "ContactInfo"){
+        <div class="container contact-info-holder">
+          <app-contact-info-form/>
+        </div>
+      }
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
