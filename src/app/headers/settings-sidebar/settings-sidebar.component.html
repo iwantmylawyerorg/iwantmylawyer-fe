@@ -9,9 +9,13 @@
       <a mat-list-item (click)="chooseForm('AboutMe')">ABOUT ME</a>
       <a mat-list-item (click)="chooseForm('ContactInfo')">CONTACT INFO</a>
     </mat-nav-list>
-    <div class="wrapper">
-      <img src="/assets/lawyer-photo.jpg" class="image--cover">
-    </div>
+    <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
+      <img src="assets/lawyer-photo.jpg" class="image--cover">
+    </button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <button mat-menu-item>Profile</button>
+      <button routerLink="/lawyer-edit-profile" mat-menu-item>Settings</button>
+    </mat-menu>
   </mat-sidenav>
   <mat-sidenav-content class="content">
     @if (isHandset$ | async) {

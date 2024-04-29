@@ -9,8 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {PostPageComponent} from "../../pages/post-page/post-page.component";
 import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
+import {MatMenuModule} from "@angular/material/menu";
+import {RouterLink} from "@angular/router";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-sidebar',
@@ -18,6 +20,7 @@ import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
   styleUrl: './sidebar.component.css',
   standalone: true,
   imports: [
+    MatCardModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -25,7 +28,8 @@ import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
     MatIconModule,
     AsyncPipe,
     FaIconComponent,
-    PostPageComponent,
+    MatMenuModule,
+    RouterLink
   ]
 })
 export class SidebarComponent {

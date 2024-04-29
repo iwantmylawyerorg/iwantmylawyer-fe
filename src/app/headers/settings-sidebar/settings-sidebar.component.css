@@ -8,15 +8,9 @@
 .sidenav .mat-toolbar {
   background: inherit;
 }
-.wrapper {
-  bottom: 0;
-  justify-self: end;
-  position: absolute;
-}
-
 .image--cover {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin: 20px;
 
@@ -79,7 +73,12 @@
   width: 100%;
   height: 100%;
 }
-.warning-sign-holder{
-
+.wrapper {
+  bottom: 0;
+  padding: 0;
+  width: 100%;
+  justify-self: end;
+  position: absolute;
+  height: fit-content;
 }
 

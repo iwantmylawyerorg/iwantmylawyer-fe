@@ -3,7 +3,7 @@ import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {AsyncPipe} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {MatIcon} from "@angular/material/icon";
-import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatButton, MatButtonModule, MatIconButton} from "@angular/material/button";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {MatToolbar} from "@angular/material/toolbar";
@@ -24,6 +24,7 @@ import {
 } from "@angular/material/stepper";
 import {RouterLink} from "@angular/router";
 import {ContactInfoFormComponent} from "../../forms/contact-info-form/contact-info-form.component";
+import {MatMenuModule} from "@angular/material/menu";
 
 @Component({
   selector: 'app-settings-sidebar',
@@ -52,7 +53,9 @@ import {ContactInfoFormComponent} from "../../forms/contact-info-form/contact-in
     MatStepperPrevious,
     ReactiveFormsModule,
     RouterLink,
-    ContactInfoFormComponent
+    ContactInfoFormComponent,
+    MatButtonModule,
+    MatMenuModule
   ],
   templateUrl: './settings-sidebar.component.html',
   styleUrl: './settings-sidebar.component.css'

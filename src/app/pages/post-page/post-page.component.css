@@ -1,29 +1,4 @@
-.example-card {
-  width: 500px;
-  margin: 100px;
-  padding: 20px;
-}
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.postimage {
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-.posts {
-  overflow: scroll;
-  max-height: 100vh;
-}
-.example-card:hover{
-  cursor: pointer;
-}
-
-
-mat-card {
-  margin: 20px !important;
-  width: fit-content;
+.post-page{
+  height: 100%;
+  width: 100%;
 }
