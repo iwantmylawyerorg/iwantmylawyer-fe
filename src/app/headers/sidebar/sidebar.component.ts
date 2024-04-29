@@ -13,6 +13,7 @@ import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {MatMenuModule} from "@angular/material/menu";
 import {RouterLink} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
+import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
 
 @Component({
   selector: 'app-sidebar',
@@ -29,7 +30,8 @@ import {MatCardModule} from "@angular/material/card";
     AsyncPipe,
     FaIconComponent,
     MatMenuModule,
-    RouterLink
+    RouterLink,
+    AILawyerComponent
   ]
 })
 export class SidebarComponent {

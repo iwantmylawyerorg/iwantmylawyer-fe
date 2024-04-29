@@ -4,7 +4,6 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {SidebarComponent} from "../../headers/sidebar/sidebar.component";
 
-
 @Component({
   selector: 'app-post-page',
   standalone: true,

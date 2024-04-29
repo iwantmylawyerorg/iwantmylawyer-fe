@@ -13,6 +13,7 @@
 
 .sidenav {
   width: 200px;
+  border: none;
   background-image: linear-gradient(to bottom right,#dc4225,#002f4b);
 }
 
