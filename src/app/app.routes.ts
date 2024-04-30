@@ -6,6 +6,7 @@ import {LawyersPageComponent} from "./pages/lawyers-page/lawyers-page.component"
 import {SidebarComponent} from "./headers/sidebar/sidebar.component";
 import {LawyerEditProfilePageComponent} from "./pages/lawyer-edit-profile-page/lawyer-edit-profile-page.component";
 import {PostPageComponent} from "./pages/post-page/post-page.component";
+import {LawyerProfilePageComponent} from "./pages/lawyer-profile-page/lawyer-profile-page.component";
 
 
 
@@ -17,4 +18,5 @@ export const routes: Routes = [
   {path:'posts', component: PostPageComponent},
   {path:'lawyers',component: LawyersPageComponent},
   {path:'lawyer-edit-profile',component: LawyerEditProfilePageComponent},
+  {path:'lawyer-profile',component: LawyerProfilePageComponent},
 ];
