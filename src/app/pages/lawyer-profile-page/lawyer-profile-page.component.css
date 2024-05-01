@@ -110,17 +110,26 @@ article {
   font-size: 20px;
 }
 .articles{
-  width: 100%;
-  height: 500px;
-  margin-top: 30px;
-  color: black;
-  padding-left: 20px;
-  padding-right: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.articles > h4{
+.card:hover{
+  cursor: pointer;
+}
+.common-questions{
+  height: 200px;
+}
+.tree{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.h4{
   font-weight: bold;
-
-  margin-left: 60px;
+  margin-top: 20px;
+  margin-left: 3rem;
 }
 .text {
   columns: 2;

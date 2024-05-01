@@ -4,7 +4,7 @@ import {AsyncPipe} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatButtonModule, MatIconButton} from "@angular/material/button";
-import {MatListItem, MatNavList} from "@angular/material/list";
+import {MatListItem, MatListModule, MatNavList} from "@angular/material/list";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {MatToolbar} from "@angular/material/toolbar";
 import {PostPageComponent} from "../../pages/post-page/post-page.component";
@@ -55,12 +55,15 @@ import {MatMenuModule} from "@angular/material/menu";
     RouterLink,
     ContactInfoFormComponent,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule
   ],
   templateUrl: './settings-sidebar.component.html',
   styleUrl: './settings-sidebar.component.css'
 })
 export class SettingsSidebarComponent {
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers','Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+  selectedShoes: string[] = ['asdas'];
   faHeart = faBars;
   chosenForm = "ActivateAccount";
 
@@ -90,6 +93,15 @@ export class SettingsSidebarComponent {
 
   chooseForm(formName:string) {
     this.chosenForm = formName;
+  }
+  onSelectionChange(shoe: string) {
+    const index = this.selectedShoes.indexOf(shoe);
+    if (index === -1) {
+      this.selectedShoes.push(shoe); // Ayakkabı seçilmemişse seçilenler listesine ekle
+    } else {
+      this.selectedShoes.splice(index, 1); // Ayakkabı zaten seçilmişse listeden çıkar
+    }
+    console.log(this.selectedShoes);
   }
 
 }

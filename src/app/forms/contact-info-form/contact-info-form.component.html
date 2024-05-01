@@ -3,13 +3,13 @@
     <div class="row row-gap">
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="email" class="form-control" id="contactEmail" placeholder="Contact Email">
+          <input type="email" class="form-control" id="contactEmail" [defaultValue]="'bugracalıskan@gmail.com'">
           <label for="contactEmail">Contact Email</label>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="tel" class="form-control" id="contactTelNo" placeholder="Ex. 542 556 22 56">
+          <input type="tel" class="form-control" id="contactTelNo" [defaultValue]="'542 274 28 89'">
           <label for="contactTelNo">Contact Tel No</label>
         </div>
       </div>
@@ -17,13 +17,13 @@
     <div class="row row-gap">
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="email" class="form-control" id="twitterUrl" placeholder="twitter url">
+          <input type="email" class="form-control" id="twitterUrl" [defaultValue]="'bugracalıskan'">
           <label for="twitterUrl">Twitter Url</label>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="instagramUrl" placeholder="instagram url">
+          <input type="text" class="form-control" id="instagramUrl" [defaultValue]="'bugracalıskan@gmail.com'">
           <label for="instagramUrl">Instagram Url</label>
         </div>
       </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="row row-gap justify-content-center">
-          <button class="btn custom-btn w-25 py-2"  type="submit">Submit</button>
+          <button class="btn custom-btn w-25 py-2"  type="submit">Update</button>
     </div>
   </form>
 </main>
