@@ -35,91 +35,11 @@
       </div>
       @if(chosenForm == "ActivateAccount"){
         <div class="container align-content-center stepper-holder">
-          <mat-stepper
-            class="example-stepper"
-            [orientation]="(stepperOrientation | async)!">
-            <mat-step [stepControl]="firstFormGroup" label="Fill out your Tc number">
-              <form [formGroup]="firstFormGroup">
-                <mat-form-field>
-                  <mat-label>Tc No</mat-label>
-                  <input matInput placeholder="Tc No" formControlName="firstCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup" label="Fill out your Bar no">
-              <form [formGroup]="secondFormGroup">
-                <mat-form-field>
-                  <mat-label>Bar no</mat-label>
-                  <input matInput formControlName="secondCtrl" placeholder="Ex. 568975"
-                         required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step label="Upload Lawyer Card Photo">
-              <form>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="inputGroupFile02">
-                  <button type="submit" class="btn btn-file-custom">Upload</button>
-                </div>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step label="Upload Tc Photo">
-              <form>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="inputGroupFile03">
-                  <button type="submit" class="btn btn-file-custom">Upload</button>
-                </div>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step label="Upload Lawyer Photo">
-              <form>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="inputGroupFile04">
-                  <button type="submit" class="btn btn-file-custom">Upload</button>
-                </div>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              <p>You are now done.</p>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-              </div>
-            </mat-step>
-          </mat-stepper>
+            <app-lawyer-credentials-stepper/>
         </div>
       } @else if (chosenForm == "AboutMe"){
         <div class="container about-me-holder">
-          <div class="row justify-content-md-center">
-            <div class="col col-md-6">
-              <div class="about-me-container mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label custom-label">About Me</label>
-                <textarea class="about-me-text-area form-control" [defaultValue]="'lorem ipsum'"  id="exampleFormControlTextarea1" rows="3"></textarea>
-                <div class="justify-content-center text-center">
-                    <button type="submit" class="btn btn-custom">Update</button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <app-about-me-form/>
         </div>
       } @else if (chosenForm == "ContactInfo"){
         <div class="container contact-info-holder">
@@ -131,15 +51,7 @@
         </div>
       } @else if (chosenForm == "ExpertiseFields"){
         <div class="container p-5">
-          <mat-selection-list #expertiseFields>
-            @for (shoe of typesOfShoes; track shoe) {
-              <mat-list-option (click)="onSelectionChange(shoe)">{{shoe}}</mat-list-option>
-            }
-          </mat-selection-list>
-
-          <p>
-            Options selected: {{expertiseFields.selectedOptions.selected.length}}
-          </p>
+              <app-expertise-field-form/>
         </div>
       } @else if (chosenForm == "Articles"){
         <div>
