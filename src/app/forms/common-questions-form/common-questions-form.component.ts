@@ -2,6 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatTable, MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
+import {DataSource} from '@angular/cdk/collections';
+import {Observable, ReplaySubject} from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 
@@ -24,23 +26,43 @@ export class CommonQuestionsFormComponent {
   questionValue: string = ''; // Bind input values
   answerValue: string = '';
   displayedColumns: string[] = ['position', 'question', 'answer'];
-  dataSource = [...QUESTION_DATA];
+  dataToDisplay = [...QUESTION_DATA];
 
-  @ViewChild('table') table!: MatTable<CommonQuestion>;
+  dataSource = new ExampleDataSource(this.dataToDisplay);
 
-  addData(question: string, answer: string) {
-    const position = this.dataSource.length + 1;
-    this.dataSource.push({ position, question, answer });
-    this.clearInputFields();
-    this.table.renderRows();
+  addData() {
+    const position = this.dataToDisplay.length+1;
+    this.dataToDisplay.push({ position, question: this.questionValue, answer: this.answerValue });
+    this.clearInput();
+    this.dataSource.setData(this.dataToDisplay);
   }
 
   removeData() {
-    this.dataSource.pop();
-    this.table.renderRows();
+    this.dataToDisplay = this.dataToDisplay.slice(0, -1);
+    this.dataSource.setData(this.dataToDisplay);
   }
-  clearInputFields() {
+  clearInput(){
     this.questionValue = '';
     this.answerValue = '';
   }
 }
+
+class ExampleDataSource extends DataSource<CommonQuestion> {
+  private _dataStream = new ReplaySubject<CommonQuestion[]>();
+
+  constructor(initialData: CommonQuestion[]) {
+    super();
+    this.setData(initialData);
+  }
+
+  connect(): Observable<CommonQuestion[]> {
+    return this._dataStream;
+  }
+
+  disconnect() {}
+
+  setData(data: CommonQuestion[]) {
+    this._dataStream.next(data);
+  }
+}
+

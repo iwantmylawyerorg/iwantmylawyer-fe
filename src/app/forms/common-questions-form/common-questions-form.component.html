@@ -10,19 +10,16 @@
       <textarea matInput #answerInput name="answer" [(ngModel)]="answerValue"></textarea>
     </mat-form-field>
     <div class="container d-flex">
-      <button mat-raised-button [disabled]="dataSource.length >= 10"
-              (click)="addData(questionInput.value, answerInput.value)" class="demo-button">
+      <button mat-raised-button (click)="addData()" [disabled]="dataToDisplay.length >= 10"
+               class="demo-button">
         Add Question
       </button>
       <button
         mat-raised-button
-        [disabled]="!dataSource.length"
+        [disabled]="!dataToDisplay.length"
         (click)="removeData()"
         class="demo-button">
         Remove Question
-      </button>
-      <button mat-raised-button class="demo-button">
-        Save
       </button>
     </div>
   </form>
