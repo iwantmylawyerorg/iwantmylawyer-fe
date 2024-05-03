@@ -10,7 +10,7 @@ import {MatListModule} from "@angular/material/list";
 })
 export class ExpertiseFieldFormComponent {
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers','Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  selectedShoes: string[] = ['asdas'];
+  selectedShoes: string[] = [];
 
   onSelectionChange(shoe: string) {
     const index = this.selectedShoes.indexOf(shoe);

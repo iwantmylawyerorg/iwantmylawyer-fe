@@ -12,7 +12,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map, shareReplay} from "rxjs/operators";
 import {MatInput} from "@angular/material/input";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {ContactInfoFormComponent} from "../../forms/contact-info-form/contact-info-form.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {
@@ -43,14 +43,14 @@ import {ExpertiseFieldFormComponent} from "../../forms/expertise-field-form/expe
     MatMenuModule,
     LawyerCredentialsStepperComponent,
     AboutMeFormComponent,
-    ExpertiseFieldFormComponent
+    ExpertiseFieldFormComponent,
+    RouterOutlet
   ],
   templateUrl: './settings-sidebar.component.html',
   styleUrl: './settings-sidebar.component.css'
 })
 export class SettingsSidebarComponent {
   faHeart = faBars;
-  chosenForm = "ActivateAccount";
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -59,9 +59,4 @@ export class SettingsSidebarComponent {
       map(result => result.matches),
       shareReplay()
     );
-
-  chooseForm(formName:string) {
-    this.chosenForm = formName;
-  }
-
 }

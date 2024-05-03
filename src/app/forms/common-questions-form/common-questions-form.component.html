@@ -1,0 +1,54 @@
+<div class="form-container container">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Question</mat-label>
+      <input matInput #questionInput name="question" [(ngModel)]="questionValue">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Answer</mat-label>
+      <textarea matInput #answerInput name="answer" [(ngModel)]="answerValue"></textarea>
+    </mat-form-field>
+    <div class="container d-flex">
+      <button mat-raised-button [disabled]="dataSource.length >= 10"
+              (click)="addData(questionInput.value, answerInput.value)" class="demo-button">
+        Add Question
+      </button>
+      <button
+        mat-raised-button
+        [disabled]="!dataSource.length"
+        (click)="removeData()"
+        class="demo-button">
+        Remove Question
+      </button>
+      <button mat-raised-button class="demo-button">
+        Save
+      </button>
+    </div>
+  </form>
+
+</div>
+<table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let e">{{e.position}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="question">
+    <th mat-header-cell *matHeaderCellDef>Question</th>
+    <td mat-cell *matCellDef="let e">{{e.question}}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="answer">
+    <th mat-header-cell *matHeaderCellDef>Answer</th>
+    <td mat-cell *matCellDef="let e">{{e.answer}}</td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
