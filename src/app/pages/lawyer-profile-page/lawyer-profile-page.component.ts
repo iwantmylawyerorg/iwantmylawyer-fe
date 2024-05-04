@@ -6,8 +6,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {GoogleMapComponent} from "../../google-map/google-map.component";
-
 
 interface FoodNode {
   name: string;
@@ -39,7 +37,6 @@ interface ExampleFlatNode {
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
-    GoogleMapComponent
   ],
   templateUrl: './lawyer-profile-page.component.html',
   styleUrl: './lawyer-profile-page.component.css'
