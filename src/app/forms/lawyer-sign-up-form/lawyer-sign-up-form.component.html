@@ -54,7 +54,7 @@
       <div class="col-md-6 align-content-center">
         <mat-form-field style="background-color: white" class="city-picker">
           <mat-label>City</mat-label>
-          <mat-select formControlName= "cityName">
+          <mat-select formControlName= "cityId">
             <mat-option>None</mat-option>
             @for (city of cities; track city) {
               <mat-option  [value]="city.id" >{{ city.name }}</mat-option>
@@ -71,11 +71,8 @@
         </div>
       </div>
       <div class="col-md-6 align-content-center">
-        <button class="btn custom-btn w-50 py-2" [disabled]="!agreedToTerms" type="submit">Submit</button>
+        <button class="btn custom-btn w-50 py-2" [disabled]="!agreedToTerms" (click)="lawyerRegister()"  type="submit">Submit</button>
       </div>
     </div>
   </form>
 </main>
-
-
-{{lawyerForm.value | json}}

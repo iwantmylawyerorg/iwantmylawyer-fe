@@ -8,6 +8,8 @@ import {City} from "../../model/city";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ToastrService} from "ngx-toastr";
 import {JsonPipe} from "@angular/common";
+import {LawyerService} from "../../services/lawyer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-lawyer-sign-up-form',
@@ -29,7 +31,10 @@ export class LawyerSignUpFormComponent implements OnInit{
   lawyerForm!: FormGroup;
 
 
-  constructor(private cityService: CityService, private fb: FormBuilder,private toastr: ToastrService){
+  constructor(private cityService: CityService, private fb: FormBuilder,
+              private toastr: ToastrService,
+              private lawyerService: LawyerService,
+              private router: Router){
   }
   handleButtonStatus(){
     this.agreedToTerms = !this.agreedToTerms;
@@ -45,7 +50,7 @@ export class LawyerSignUpFormComponent implements OnInit{
       telephoneNo: ['',Validators.required],
       tcNo: ['',Validators.required],
       baroSicilNo: ['',Validators.required],
-      cityName: ['',Validators.required],
+      cityId: ['',Validators.required],
     })
   }
 
@@ -64,7 +69,24 @@ export class LawyerSignUpFormComponent implements OnInit{
   lawyerRegister(){
     if(this.lawyerForm.valid){
       let request = Object.assign({},this.lawyerForm.value);
-
+        this.lawyerService.registerLawyer(request).subscribe({
+          next:(value) =>{
+            this.toastr.success("You have successfully registered!");
+            this.router.navigate(['login']);
+          },
+          error: (error) => {
+            console.log(error);
+            if(error.error.email){
+              this.toastr.error(error.error.email);
+            }
+            if(error.error.password){
+              this.toastr.error(error.error.password);
+            }
+            if(error.status === 409){
+              this.toastr.error(error.error);
+            }
+          }
+        })
     }
   }
 
