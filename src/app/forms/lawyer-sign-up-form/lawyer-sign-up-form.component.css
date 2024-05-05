@@ -51,7 +51,7 @@ input:focus > label {
   width: 100%;
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:800px){
   .row-gap{
     margin-bottom: 0;
   }

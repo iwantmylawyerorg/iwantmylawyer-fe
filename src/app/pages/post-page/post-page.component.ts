@@ -3,6 +3,7 @@ import {MatButton} from "@angular/material/button";
 import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {SidebarComponent} from "../../headers/sidebar/sidebar.component";
+import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
 
 @Component({
   selector: 'app-post-page',
@@ -11,6 +12,7 @@ import {SidebarComponent} from "../../headers/sidebar/sidebar.component";
     MatButton,
     FaIconComponent,
     SidebarComponent,
+    AILawyerComponent,
   ],
   templateUrl: './post-page.component.html',
   styleUrl: './post-page.component.css'

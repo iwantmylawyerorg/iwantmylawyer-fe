@@ -32,7 +32,7 @@ import {AsyncPipe} from "@angular/common";
   templateUrl: './lawyer-credentials-stepper.component.html',
   styleUrl: './lawyer-credentials-stepper.component.css'
 })
-export class LawyerCredentialsStepperComponent {
+export class LawyerCredentialsStepperComponent{
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -57,4 +57,6 @@ export class LawyerCredentialsStepperComponent {
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
   }
 
+
+  protected readonly localStorage = localStorage;
 }

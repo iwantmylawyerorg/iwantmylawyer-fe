@@ -4,6 +4,7 @@
   right: 50px;
   bottom: 0;
   transition: ease-in-out 500ms;
+  z-index: 1;
 }
 
 .ai-lawyer-img:hover{
@@ -11,7 +12,6 @@
   transform: scale(1.1);
 }
 .custom-dialog{
-  z-index: 99;
   color: white;
   font-family: "Quicksand", sans-serif;
   background:linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
