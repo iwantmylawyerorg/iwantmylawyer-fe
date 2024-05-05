@@ -1,15 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup, FormGroupDirective,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+  Validators
+} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {CityService} from "../../services/city.service";
 import {City} from "../../model/city";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ToastrService} from "ngx-toastr";
 import {JsonPipe} from "@angular/common";
 import {LawyerService} from "../../services/lawyer.service";
 import {Router} from "@angular/router";
+import {MatIconModule} from "@angular/material/icon";
+import {MatIconButton} from "@angular/material/button";
+
 
 @Component({
   selector: 'app-lawyer-sign-up-form',
@@ -20,12 +30,15 @@ import {Router} from "@angular/router";
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    JsonPipe
+    JsonPipe,
+    MatIconModule,
+    MatIconButton
   ],
   templateUrl: './lawyer-sign-up-form.component.html',
   styleUrl: './lawyer-sign-up-form.component.css'
 })
 export class LawyerSignUpFormComponent implements OnInit{
+  hide = true;
   agreedToTerms: boolean = false;
   cities: City[] = [];
   lawyerForm!: FormGroup;
@@ -43,7 +56,7 @@ export class LawyerSignUpFormComponent implements OnInit{
   ngOnInit(): void {
     this.getAllCities();
     this.lawyerForm = this.fb.group({
-      email: ['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
       password: ['', Validators.required],
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],

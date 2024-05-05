@@ -4,6 +4,10 @@ import {NgClass} from "@angular/common";
 import {ClientService} from "../../services/client.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {MatError, MatFormField, MatLabel, MatPrefix, MatSuffix} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatIconButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-client-sign-up-form',
@@ -11,12 +15,21 @@ import {Router} from "@angular/router";
   imports: [
     FormsModule,
     NgClass,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatError,
+    MatIcon,
+    MatIconButton,
+    MatSuffix,
+    MatPrefix
   ],
   templateUrl: './client-sign-up-form.component.html',
   styleUrl: './client-sign-up-form.component.css'
 })
 export class ClientSignUpFormComponent implements OnInit{
+  hide = true;
   agreedToTerms: boolean = false;
   clientForm!: FormGroup;
 
@@ -31,7 +44,7 @@ export class ClientSignUpFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.clientForm = this.fb.group({
-      email: ['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
       password: ['',Validators.required],
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],

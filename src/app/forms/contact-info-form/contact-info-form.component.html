@@ -2,38 +2,51 @@
   <form class="contact-info-form align-items-center m-auto">
     <div class="row row-gap">
       <div class="col-md-6">
-        <div class="form-floating">
-          <input type="email" class="form-control" id="contactEmail" [defaultValue]="'bugracalıskan@gmail.com'">
-          <label for="contactEmail">Contact Email</label>
-        </div>
+        <mat-form-field class="example-full-width input-container">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput
+                 value="bugracalıskan@gmail.com"
+                 placeholder="Ex. pat@example.com">
+          @if (updateLawyerForm.get('email')?.hasError('email') && !updateLawyerForm.get('email')?.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (updateLawyerForm.get('email')?.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
       </div>
       <div class="col-md-6">
-        <div class="form-floating">
-          <input type="tel" class="form-control" id="contactTelNo" [defaultValue]="'542 274 28 89'">
-          <label for="contactTelNo">Contact Tel No</label>
-        </div>
-      </div>
-    </div>
-    <div class="row row-gap">
-      <div class="col-md-6">
-        <div class="form-floating">
-          <input type="email" class="form-control" id="twitterUrl" [defaultValue]="'bugracalıskan'">
-          <label for="twitterUrl">Twitter Url</label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-floating">
-          <input type="text" class="form-control" id="instagramUrl" [defaultValue]="'bugracalıskan@gmail.com'">
-          <label for="instagramUrl">Instagram Url</label>
-        </div>
+        <mat-form-field class="example-full-width input-container">
+          <mat-label>Telephone</mat-label>
+          <span matTextPrefix>+90 &nbsp;</span>
+          <input value="542-587-25-58"  type="tel" matInput placeholder="555-555-1234">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
       </div>
     </div>
     <div class="row row-gap">
       <div class="col-md-6">
-        <div class="form-floating">
-          <input type="text" class="form-control" id="facebookUrl" placeholder="facebook url">
-          <label for="facebookUrl">Facebook Url</label>
-        </div>
+        <mat-form-field class="example-full-width input-container">
+          <mat-label>Twitter Url</mat-label>
+          <input  value="bugracalıskantwitter" matInput>
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width input-container">
+          <mat-label>Instagram Url</mat-label>
+          <input  value="bugracalıskanınstagram" matInput>
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row row-gap">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width input-container">
+          <mat-label>Facebook Url</mat-label>
+          <input  value="bugracalıskanfacebook" matInput>
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
       </div>
     </div>
     <div class="row row-gap justify-content-center">

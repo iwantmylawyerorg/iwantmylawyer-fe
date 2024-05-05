@@ -6,26 +6,11 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-.signup-form .form-floating:focus-within {
-  z-index: 2;
-}
-input:focus {
-  border-color: black;
-  box-shadow: 0 0 0 0.2rem rgb(0, 0, 0,0.8);
-}
-input:focus > label {
-  color: black;
-}
-.signup-form input[type="email"] {
-  margin-bottom: -1px;
-}
+
 .row-gap{
   margin-bottom: 20px;
 }
 
-.signup-form input[type="password"] {
-  margin-bottom: 10px;
-}
 .custom-btn{
   border: 2px solid black;
   color: white;
@@ -47,8 +32,15 @@ input:focus > label {
   color: black;
   font-weight: bold;
 }
-.city-picker{
+.input-container{
   width: 100%;
+}
+.password-container > input{
+  -moz-appearance: textfield;
+}
+.password-container > input::-webkit-outer-spin-button,
+.password-container > input::-webkit-inner-spin-button{
+  display: none;
 }
 
 @media screen and (max-width:800px){
