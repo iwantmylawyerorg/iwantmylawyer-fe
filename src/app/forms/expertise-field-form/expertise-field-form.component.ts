@@ -15,9 +15,10 @@ export class ExpertiseFieldFormComponent {
   onSelectionChange(shoe: string) {
     const index = this.selectedShoes.indexOf(shoe);
     if (index === -1) {
-      this.selectedShoes.push(shoe); // Ayakkabı seçilmemişse seçilenler listesine ekle
+      this.selectedShoes.push(shoe);
+
     } else {
-      this.selectedShoes.splice(index, 1); // Ayakkabı zaten seçilmişse listeden çıkar
+      this.selectedShoes.splice(index, 1);
     }
     console.log(this.selectedShoes);
   }
