@@ -59,4 +59,7 @@ export class SettingsSidebarComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  constructor() {
+  }
 }

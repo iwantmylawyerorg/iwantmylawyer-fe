@@ -15,8 +15,10 @@
         <img src="assets/lawyer-photo.jpg" class="image--cover">
     </button>
     <mat-menu #aboveMenu="matMenu" yPosition="above">
-      <button routerLink="/lawyer-profile" mat-menu-item>Profile</button>
-      <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
+      @if(getCustomerId()){
+        <button routerLink="/lawyer-profile/{{lawyerId}}" mat-menu-item >Profile</button>
+        <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
+      }
     </mat-menu>
   </mat-sidenav>
   <mat-sidenav-content class="content">

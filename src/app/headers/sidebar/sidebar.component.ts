@@ -11,7 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {MatMenuModule} from "@angular/material/menu";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
 
@@ -44,4 +44,23 @@ export class SidebarComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  constructor(private router:Router) {
+  }
+  lawyerId:string;
+
+  getCustomerId(){
+    if(localStorage.getItem("acces_token")){
+      // @ts-ignore
+      this.lawyerId = localStorage.getItem("id")
+
+      return true;
+    }
+    else{
+      return false
+    }
+  }
+  goToProfile(){
+    this.router.navigate(["/lawyer-profile/"+this.lawyerId])
+  }
 }

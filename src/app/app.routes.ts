@@ -26,7 +26,9 @@ export const routes: Routes = [
   {path:'signup',component: SignupPageComponent},
   {path:'posts', component: PostPageComponent},
   {path:'lawyers',component: LawyersPageComponent},
+  {path:'lawyer-profile/:id',component: LawyerProfilePageComponent},
   {path:'lawyer-edit-profile',component: LawyerEditProfilePageComponent,
+
   children:[
     {path:'activate-account',component:LawyerCredentialsStepperComponent},
     {path:'about-me',component:AboutMeFormComponent},
@@ -36,5 +38,4 @@ export const routes: Routes = [
     {path:'common-questions',component:CommonQuestionsFormComponent},
     {path:'articles',component:ArticlesFormComponent}
   ]},
-  {path:'lawyer-profile',component: LawyerProfilePageComponent},
 ];

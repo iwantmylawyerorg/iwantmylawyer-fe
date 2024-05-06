@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ResponsiveHeaderComponent} from "../../headers/responsive-header/responsive-header.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from "@angular/material/tree";
@@ -41,7 +41,7 @@ interface ExampleFlatNode {
   templateUrl: './lawyer-profile-page.component.html',
   styleUrl: './lawyer-profile-page.component.css'
 })
-export class LawyerProfilePageComponent {
+export class LawyerProfilePageComponent implements OnInit{
   panelOpenState = false;
   private _transformer = (node: FoodNode, level: number) => {
     return {
@@ -70,5 +70,9 @@ export class LawyerProfilePageComponent {
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+  ngOnInit(): void {
+
+  }
 
 }
