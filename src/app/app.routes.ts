@@ -28,14 +28,14 @@ export const routes: Routes = [
   {path:'lawyers',component: LawyersPageComponent},
   {path:'lawyer-profile/:id',component: LawyerProfilePageComponent},
   {path:'lawyer-edit-profile',component: LawyerEditProfilePageComponent,
-
-  children:[
-    {path:'activate-account',component:LawyerCredentialsStepperComponent},
-    {path:'about-me',component:AboutMeFormComponent},
-    {path:'contact-info',component:ContactInfoFormComponent},
-    {path:'address',component:AddressFormComponent},
-    {path:'expertise-fields',component:ExpertiseFieldFormComponent},
-    {path:'common-questions',component:CommonQuestionsFormComponent},
-    {path:'articles',component:ArticlesFormComponent}
-  ]},
+    children:[
+      {path:'activate-account',component:LawyerCredentialsStepperComponent},
+      {path:'about-me',component:AboutMeFormComponent},
+      {path:'contact-info',component:ContactInfoFormComponent},
+      {path:'address',component:AddressFormComponent},
+      {path:'expertise-fields',component:ExpertiseFieldFormComponent},
+      {path:'common-questions',component:CommonQuestionsFormComponent},
+      {path:'articles',component:ArticlesFormComponent}
+    ]},
+  {path: '**',redirectTo: ''},
 ];

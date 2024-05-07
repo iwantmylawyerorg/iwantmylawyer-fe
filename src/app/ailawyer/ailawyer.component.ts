@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AiService} from "../services/ai.service";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Chat} from "../model/chat";
+import {Constant} from "../constant/constant";
 
 @Component({
   selector: 'app-ailawyer',
@@ -28,8 +29,8 @@ export class AILawyerComponent implements OnInit{
       this.chat.push({name: "You", message: userInput})
       this.aiService.chat(userInput).subscribe({
         next: value => {
-          console.log(value)
           this.chat.push({name: "AI Lawyer", message: value.message});
+          this.aiForm.reset();
         },
         error: err => {
           console.log(err);
@@ -39,4 +40,16 @@ export class AILawyerComponent implements OnInit{
   }
 
 
+  refreshChat() {
+      this.aiService.deleteChat().subscribe(
+        {
+          next: value => {
+            this.chat = [];
+          },
+          error: err => {
+            console.log(err);
+          }
+        }
+      )
+  }
 }

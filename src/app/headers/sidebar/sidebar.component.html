@@ -11,15 +11,17 @@
         <a mat-list-item href="#">LOGIN</a>
         <a mat-list-item href="#">SIGNUP</a>
     </mat-nav-list>
-    <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
-        <img src="assets/lawyer-photo.jpg" class="image--cover">
-    </button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above">
-      @if(getCustomerId()){
-        <button routerLink="/lawyer-profile/{{lawyerId}}" mat-menu-item >Profile</button>
+    @if(getLawyerId()){
+      <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
+        <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
+      </button>
+      <mat-menu #aboveMenu="matMenu" yPosition="above">
+
+        <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
         <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
-      }
-    </mat-menu>
+
+      </mat-menu>
+    }
   </mat-sidenav>
   <mat-sidenav-content class="content">
       @if (isHandset$ | async) {

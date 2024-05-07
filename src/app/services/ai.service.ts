@@ -15,4 +15,8 @@ export class AiService {
   chat(userInput: string): Observable<ChatbotResponse> {
     return this.http.get<ChatbotResponse>(Constant.CHAT_AI + `${userInput}`);
   }
+  deleteChat() {
+    return this.http.delete<void>(Constant.CHAT_AI);
+  }
 }
+

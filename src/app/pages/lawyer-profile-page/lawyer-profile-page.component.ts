@@ -6,18 +6,21 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {ActivatedRoute} from "@angular/router";
+import {LawyerService} from "../../services/lawyer.service";
+import {LawyerResponse} from "../../model/laywerResponse";
 
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
 
-const TREE_DATA: FoodNode[] = [
+let TREE_DATA: FoodNode[] = [
   {
     name: 'EXPERTISE FIELDS',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'},{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'},{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
-  },
-];
+    children: [],
+  }
+]
 
 /** Flat node with expandable and level information */
 interface ExampleFlatNode {
@@ -43,6 +46,7 @@ interface ExampleFlatNode {
 })
 export class LawyerProfilePageComponent implements OnInit{
   panelOpenState = false;
+  lawyer:LawyerResponse;
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -65,14 +69,34 @@ export class LawyerProfilePageComponent implements OnInit{
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  lawyerId: string;
+
+
+  constructor(private activateRoute: ActivatedRoute,private lawyerService: LawyerService) {
     this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   ngOnInit(): void {
+    this.activateRoute.params.subscribe(params => {
+      this.lawyerId = params['id'];
+    })
+    this.getLawyerById();
 
   }
+  getLawyerById() {
+    this.lawyerService.getLawyer(this.lawyerId).subscribe({
+      next: value => {
+        console.log(value);
+        this.lawyer= value;
+        value.articleResponse?.map(value1 => TREE_DATA[0].children.push({name: value1.header}));
+      },
+      error:err => {
+
+      }
+    })
+  }
+
 
 }

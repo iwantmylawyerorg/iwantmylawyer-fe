@@ -9,5 +9,5 @@ export const Constant: any = {
   UPDATE_TC_PHOTO: "/api/v1/lawyer/addTcPhoto/",
   UPDATE_LAWYER_PHOTO: "/api/v1/lawyer/addLawyerPhoto/",
   GET_LAWYER: "/api/v1/lawyer/",
-
+  GET_ALL_LAWYER: "/api/v1/lawyer/",
 }
