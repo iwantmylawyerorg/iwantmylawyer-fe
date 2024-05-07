@@ -3,17 +3,10 @@ import {ResponsiveHeaderComponent} from "../../headers/responsive-header/respons
 import {NgClass} from "@angular/common";
 import {LawyerCardComponent} from "../../cards/lawyer-card/lawyer-card.component";
 import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
-import {MatIcon, MatIconModule} from "@angular/material/icon";
-import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
-import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons/faMagnifyingGlass";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
-import {LawyerService} from "../../services/lawyer.service";
-import {LawyerGetAllResponse} from "../../model/lawyerGetAllResponse";
-import {MatExpansionModule, MatExpansionPanel} from "@angular/material/expansion";
+
 
 @Component({
   selector: 'app-lawyers-page',
@@ -23,11 +16,6 @@ import {MatExpansionModule, MatExpansionPanel} from "@angular/material/expansion
     NgClass,
     LawyerCardComponent,
     AILawyerComponent,
-    MatExpansionPanel,
-    MatExpansionModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
     FaIconComponent,
@@ -36,15 +24,7 @@ import {MatExpansionModule, MatExpansionPanel} from "@angular/material/expansion
   styleUrl: './lawyers-page.component.css'
 })
 export class LawyersPageComponent{
-  searchIcon = faMagnifyingGlass
-  step = 0;
 
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  protected readonly faHeart = faBars;
 
 
 

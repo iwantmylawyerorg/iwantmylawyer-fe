@@ -1,8 +1,33 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Search Lawyer
+      </mat-panel-title>
+      <mat-panel-description>
+        Search by credentials
+        <fa-icon class="icon" [icon]="searchIcon"> </fa-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container text-center">
+      <mat-form-field>
+        <mat-label>Lawyer name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
 <section class="wrapper">
   <div class="container">
-
     <div class="row">
-
           <div class="col-sm-12 col-md-6 col-lg-4 mb-4"><div class="card text-dark card-has-bg click-col" style="background-image:url('assets/lawyer-photo.jpg');">
             <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="lawyer-card">
             <div class="card-img-overlay d-flex flex-column">
@@ -21,6 +46,10 @@
           </div>
         </div>
     </div>
+    <mat-paginator [length]="100"
+                   [pageSize]="10"
+                   aria-label="Select page">
+    </mat-paginator>
   </div>
 </section>
 

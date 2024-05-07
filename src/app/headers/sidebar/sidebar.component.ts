@@ -67,7 +67,6 @@ export class SidebarComponent implements OnInit{
   getLawyerById() {
     this.lawyerService.getLawyer(this.lawyerId).subscribe({
       next: value => {
-        console.log(value);
         this.lawyer= value;
       },
       error:err => {
