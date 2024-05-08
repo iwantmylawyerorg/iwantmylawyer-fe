@@ -8,10 +8,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {FormsModule} from "@angular/forms";
 import {LawyerService} from "../../services/lawyer.service";
 import {LawyerGetAllResponse} from "../../model/lawyerGetAllResponse";
+import {NgStyle} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-lawyer-card',
@@ -25,7 +27,9 @@ import {LawyerGetAllResponse} from "../../model/lawyerGetAllResponse";
     MatDatepickerModule,
     FaIconComponent,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    NgStyle,
+    RouterLink
   ],
   templateUrl: './lawyer-card.component.html',
   styleUrl: './lawyer-card.component.css'
@@ -52,7 +56,11 @@ export class LawyerCardComponent implements OnInit{
   ngOnInit(): void {
     this.getAllLawyers();
   }
-
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getAllLawyers();
+  }
   getAllLawyers(){
     this.lawyerService.getAllLawyers(this.pageIndex,this.pageSize,"%20"+this.lawyerName,"%20"+this.lawyerLastName,"%20"+this.city)
       .subscribe({

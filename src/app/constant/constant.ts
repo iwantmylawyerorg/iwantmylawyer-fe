@@ -10,4 +10,8 @@ export const Constant: any = {
   UPDATE_LAWYER_PHOTO: "/api/v1/lawyer/addLawyerPhoto/",
   GET_LAWYER: "/api/v1/lawyer/",
   GET_ALL_LAWYER: "/api/v1/lawyer/",
+  UPDATE_SOCIAL_CONTACT_INFO: "/api/v1/lawyer/updateSocialContact",
+  GET_EXPERTISE_FIELDS: "/api/v1/expertisefield",
+  ADD_EXPERTISE_FIELD: "/api/v1/lawyer/addExpertiseField",
+  REMOVE_EXPERTISE_FIELD: "/api/v1/lawyer/removeExpertiseField",
 }

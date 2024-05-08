@@ -9,14 +9,16 @@
           <div class="col-md-6">
             <p><i class="ri-map-pin-2-line icon"></i>{{ lawyer?.cityResponse.name }}</p>
           </div>
-          <div class="col-md-6">
-            <p><i class="ri-phone-line icon"></i>{{ lawyer?.telephoneNo }}</p>
-          </div>
+          @if(lawyer?.contactTelNo){
+            <div class="col-md-6">
+              <p><i class="ri-phone-line icon"></i>{{ lawyer?.contactTelNo }}</p>
+            </div>
+          }
         </div>
         <div class="row  text-center">
-          @if(lawyer?.email){
+          @if(lawyer?.contactEmail){
             <div class="col-md-6">
-              <p><i class="ri-mail-line icon"></i>{{ lawyer?.email }}</p>
+              <p><i class="ri-mail-line icon"></i>{{ lawyer?.contactEmail }}</p>
             </div>
           }
           @if(lawyer?.contactTwitterUrl){
@@ -68,7 +70,7 @@
           </div>
         </div>
       }
-      @if(lawyer?.expertiseFieldResponse?.length > 0) {
+      @if(lawyer?.expertiseFieldResponseList?.length > 0) {
         <p class="h4">EXPERTISE FIELDS</p>
         <mat-tree class="tree" [dataSource]="dataSource" [treeControl]="treeControl">
           <!-- This is the tree node template for leaf nodes -->

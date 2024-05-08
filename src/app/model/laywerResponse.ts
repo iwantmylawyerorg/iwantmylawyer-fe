@@ -19,7 +19,7 @@ export interface LawyerResponse {
   contactFaceBookUrl: string;
   cityResponse: City;
   addressResponse: AddressResponse;
-  expertiseFieldResponse: ExpertiseFieldResponse[];
+  expertiseFieldResponseList: ExpertiseFieldResponse[];
   articleResponse: ArticleResponse[];
   commonQuestionResponse: CommonQuestionResponse[];
 

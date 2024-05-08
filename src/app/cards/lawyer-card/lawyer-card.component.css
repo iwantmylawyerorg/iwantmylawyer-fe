@@ -64,8 +64,8 @@ h1 {
 }
 .card.card-has-bg:hover .card-img-overlay {
   transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-  background: #ffba21;
-  background: linear-gradient(0deg, rgba(255, 186, 33, 0.5) 0%, rgba(255, 186, 33, 1) 100%);
+  background: #D1B385;
+  background: linear-gradient(0deg, rgb(209, 179, 133,0.5) 0%, rgb(209, 179, 133,1) 100%);
 }
 .card .card-footer {
   background: none;
@@ -99,6 +99,6 @@ h1 {
 }
 .card .card-img-overlay {
   transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-  background: #ffba21;
-  background: linear-gradient(0deg, rgba(255, 186, 33, 0.3785889355742297) 0%, rgba(255, 186, 33, 1) 100%);
+  background: #d1b385;
+  background: linear-gradient(0deg, rgb(209, 179, 133,0.37) 0%, rgb(209, 179, 133) 100%);
 }

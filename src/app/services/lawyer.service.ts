@@ -4,6 +4,8 @@ import {LawyerRequest} from "../model/lawyerRequest";
 import {Constant} from "../constant/constant";
 import {LawyerResponse} from "../model/laywerResponse";
 import {LawyerGetAllResponse} from "../model/lawyerGetAllResponse";
+import {UpdateSocialContactInfoRequest} from "../model/updateSocialContactInfoRequest";
+import {AddExpertiseFieldRequest} from "../model/addExpertiseFieldRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +28,14 @@ export class LawyerService {
       +`${firstName}`+"/"
       +`${lastName}`+"/"
       +`${city}`)
+  }
+  updateSocialContactInfo(updateSocialContactInfoRequest: UpdateSocialContactInfoRequest) {
+    return this.http.put<void>(Constant.UPDATE_SOCIAL_CONTACT_INFO,updateSocialContactInfoRequest);
+  }
+  addExpertiseField(addExpertiseFieldRequest: AddExpertiseFieldRequest){
+    return this.http.put<void>(Constant.ADD_EXPERTISE_FIELD,addExpertiseFieldRequest);
+  }
+  removeExpertiseField(addExpertiseFieldRequest: AddExpertiseFieldRequest){
+    return this.http.put<void>(Constant.REMOVE_EXPERTISE_FIELD,addExpertiseFieldRequest);
   }
 }

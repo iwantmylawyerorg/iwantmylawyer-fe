@@ -1,6 +1,8 @@
-<mat-selection-list >
-  @for (shoe of typesOfShoes; track shoe) {
-    <mat-list-option (click)="onSelectionChange(shoe)" [selected] = "selectedShoes.includes(shoe)">{{shoe}}</mat-list-option>
+<mat-selection-list>
+  @for (expertiseField of expertiseFields; track expertiseField.id) {
+    <mat-list-option (click)="onSelectionChange(expertiseField)"
+                     [selected]="selected.includes(expertiseField.name)">
+      {{ expertiseField.name }}
+    </mat-list-option>
   }
 </mat-selection-list>
-

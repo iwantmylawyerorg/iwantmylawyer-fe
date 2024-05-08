@@ -5,7 +5,7 @@ export interface LawyerGetAllResponse {
     id: string;
     firstName: string;
     lastName: string;
-    telephoneNo: string;
+    contactTelephoneNo: string;
     lawyerPhoto: string;
     baroKayitIl: City;
   }[];

@@ -6,6 +6,8 @@ import {MatSelect} from "@angular/material/select";
 import {ToastrService} from "ngx-toastr";
 import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
+import {LawyerService} from "../../services/lawyer.service";
+import {LawyerResponse} from "../../model/laywerResponse";
 
 @Component({
   selector: 'app-contact-info-form',
@@ -28,19 +30,52 @@ import {MatIcon} from "@angular/material/icon";
 })
 export class ContactInfoFormComponent implements OnInit{
   hide = true;
+  lawyer : LawyerResponse;
+  lawyerId = "";
   updateLawyerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder,private toastr: ToastrService) {
+  constructor(private lawyerService:LawyerService, private fb: FormBuilder,private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.lawyerId = localStorage.getItem('id')
     this.updateLawyerForm = this.fb.group({
-      email: ['',Validators.email],
-      telNo: [''],
-      facebookUrl: [''],
-      instagramUrl: [''],
-      twitterUrl: [''],
+      id:[this.lawyerId],
+      contactEmail: [' '],
+      contactTelNo: [' '],
+      contactFaceBookUrl: [' '],
+      contactInstagramUrl: [' '],
+      contactTwitterUrl: [' '],
     })
+    this.getLawyer();
+  }
+
+  getLawyer(){
+    this.lawyerService.getLawyer(this.lawyerId).subscribe(
+      {
+        next: value => {
+          this.lawyer= value;
+          console.log(value);
+          console.log(this.lawyer.email)
+        },
+        error: err => {
+          console.log(err);
+        }
+      }
+    )
+  }
+  updateSocialContact(){
+    if(this.updateLawyerForm.valid){
+      let request = Object.assign({},this.updateLawyerForm.value);
+      this.lawyerService.updateSocialContactInfo(request).subscribe({
+        next: value => {
+
+        },
+        error: err => {
+          console.log(err);
+        }
+      })
+    }
   }
 
 }
