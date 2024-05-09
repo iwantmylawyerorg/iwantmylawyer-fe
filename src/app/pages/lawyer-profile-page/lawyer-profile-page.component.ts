@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ResponsiveHeaderComponent} from "../../headers/responsive-header/responsive-header.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from "@angular/material/tree";
@@ -18,7 +18,7 @@ interface FoodNode {
 let TREE_DATA: FoodNode[] = [
   {
     name: 'EXPERTISE FIELDS',
-    children: [],
+    children: []
   }
 ]
 
@@ -44,7 +44,7 @@ interface ExampleFlatNode {
   templateUrl: './lawyer-profile-page.component.html',
   styleUrl: './lawyer-profile-page.component.css'
 })
-export class LawyerProfilePageComponent implements OnInit{
+export class LawyerProfilePageComponent implements OnInit,OnDestroy{
   panelOpenState = false;
   lawyer:LawyerResponse;
   private _transformer = (node: FoodNode, level: number) => {
@@ -73,7 +73,6 @@ export class LawyerProfilePageComponent implements OnInit{
 
 
   constructor(private activateRoute: ActivatedRoute,private lawyerService: LawyerService) {
-    this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
@@ -85,18 +84,21 @@ export class LawyerProfilePageComponent implements OnInit{
     this.getLawyerById();
 
   }
+  ngOnDestroy() {
+    TREE_DATA[0].children = []
+  }
+
   getLawyerById() {
     this.lawyerService.getLawyer(this.lawyerId).subscribe({
       next: value => {
-        console.log(value);
         this.lawyer= value;
-        value.articleResponse?.map(value1 => TREE_DATA[0].children.push({name: value1.header}));
+        value.expertiseFieldResponseList?.map(value1 => TREE_DATA[0].children.push({name:value1.name}));
+        this.dataSource.data = TREE_DATA;
       },
       error:err => {
 
       }
     })
   }
-
 
 }

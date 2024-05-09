@@ -53,11 +53,11 @@
       <div class="text">
         <p>{{ lawyer?.aboutMe }}</p>
       </div>
-      @if(lawyer?.articleResponse?.length > 0){
+      @if(lawyer?.articleResponseList?.length > 0){
         <p class="h4">ARTICLES</p>
         <div class="articles container">
           <div class="row">
-            @for (article of lawyer?.articleResponse; track article.id) {
+            @for (article of lawyer?.articleResponseList; track article.id) {
               <div class="col-md-4 mb-4 d-flex justify-content-center">
                 <div class="card" style="width: 15rem;">
                   <img [src]="'data:image/jpg;base64,'+ article?.photo" class="card-img-top" alt="...">
@@ -91,11 +91,11 @@
           </mat-tree-node>
         </mat-tree>
       }
-      @if(lawyer?.commonQuestionResponse?.length > 0){
+      @if(lawyer?.commonQuestionResponseList?.length > 0){
         <p class="h4">COMMON QUESTIONS</p>
         <div class="common-questions">
           <mat-accordion>
-            @for(question of lawyer.commonQuestionResponse ; track question.id){
+            @for(question of lawyer.commonQuestionResponseList ; track question.id){
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
                   <mat-panel-title>

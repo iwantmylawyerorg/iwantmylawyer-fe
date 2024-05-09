@@ -20,7 +20,7 @@ export interface LawyerResponse {
   cityResponse: City;
   addressResponse: AddressResponse;
   expertiseFieldResponseList: ExpertiseFieldResponse[];
-  articleResponse: ArticleResponse[];
-  commonQuestionResponse: CommonQuestionResponse[];
+  articleResponseList: ArticleResponse[];
+  commonQuestionResponseList: CommonQuestionResponse[];
 
 }

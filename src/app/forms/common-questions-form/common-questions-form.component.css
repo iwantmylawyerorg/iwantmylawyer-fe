@@ -19,3 +19,10 @@
 .example-full-width {
   width: 100%;
 }
+
+.common-questions{
+  margin-top: 20px;
+  min-height: 200px;
+  overflow-y: scroll;
+  background-color: #eeecec;
+}
