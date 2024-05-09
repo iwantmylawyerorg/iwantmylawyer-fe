@@ -11,11 +11,12 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map, shareReplay} from "rxjs/operators";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {AsyncPipe} from "@angular/common";
 import {ActivateAccountService} from "../../services/activate-account.service";
+import {AddressService} from "../../services/address.service";
 
 @Component({
   selector: 'app-lawyer-credentials-stepper',
@@ -35,24 +36,22 @@ import {ActivateAccountService} from "../../services/activate-account.service";
 })
 export class LawyerCredentialsStepperComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
+  addressFormGroup!:FormGroup;
+  lawyerId = "";
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private activateAccountService: ActivateAccountService,
+    private addressService: AddressService,
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -63,7 +62,16 @@ export class LawyerCredentialsStepperComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.lawyerId=localStorage.getItem('id');
+    this.addressFormGroup = this._formBuilder.group({
+      street:['',Validators.required],
+      alley:['',Validators.required],
+      city:['',Validators.required],
+      state:['',Validators.required],
+      postalCode:['',Validators.required],
+      country:['',Validators.required],
+      lawyerId:[this.lawyerId,Validators.required],
+    });
   }
 
   imageFile?: File;
@@ -108,5 +116,21 @@ export class LawyerCredentialsStepperComponent implements OnInit {
         console.log(error);
       }
     })
+  }
+  createAddress(){
+    if(this.addressFormGroup.valid){
+      let addressRequest = Object.assign({},this.addressFormGroup.value)
+      console.log(addressRequest);
+      this.addressService.createAddress(addressRequest).subscribe(
+        {
+          next: value => {
+
+          },
+          error: error => {
+            console.log(error);
+          }
+        }
+      )
+    }
   }
 }

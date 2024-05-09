@@ -80,4 +80,5 @@ export class SidebarComponent implements OnInit{
     this.getLawyerById();
   }
 
+  protected readonly localStorage = localStorage;
 }

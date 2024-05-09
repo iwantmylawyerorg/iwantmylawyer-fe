@@ -12,6 +12,9 @@ export class CommonquestionsService {
 
 
   createCommonQuestion(createCommonQuestionRequest: CreateCommonQuestionRequest) {
-    return this.http.post<void>(Constant.CREATE_CommonQuestion, createCommonQuestionRequest);
+    return this.http.post<void>(Constant.CREATE_COMMON_QUESTION, createCommonQuestionRequest);
+  }
+  deleteCommonQuestion(id:string){
+    return this.http.delete<void>(Constant.DELETE_COMMON_QUESTION +`${id}`);
   }
 }

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {AsyncPipe} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
@@ -20,6 +20,8 @@ import {
 } from "../../forms/lawyer-credentials-stepper/lawyer-credentials-stepper.component";
 import {AboutMeFormComponent} from "../../forms/about-me-form/about-me-form.component";
 import {ExpertiseFieldFormComponent} from "../../forms/expertise-field-form/expertise-field-form.component";
+import {LawyerService} from "../../services/lawyer.service";
+import {LawyerResponse} from "../../model/laywerResponse";
 
 @Component({
   selector: 'app-settings-sidebar',
@@ -49,8 +51,10 @@ import {ExpertiseFieldFormComponent} from "../../forms/expertise-field-form/expe
   templateUrl: './settings-sidebar.component.html',
   styleUrl: './settings-sidebar.component.css'
 })
-export class SettingsSidebarComponent {
+export class SettingsSidebarComponent implements OnInit {
   faHeart = faBars;
+  lawyerId = "";
+  lawyer:LawyerResponse;
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -60,6 +64,25 @@ export class SettingsSidebarComponent {
       shareReplay()
     );
 
-  constructor() {
+  ngOnInit(): void {
+    this.lawyerId = localStorage.getItem('id');
+    this.getLawyerById();
   }
+
+  constructor(private lawyerService: LawyerService) {
+  }
+
+  getLawyerById() {
+    this.lawyerService.getLawyer(this.lawyerId).subscribe({
+      next: value => {
+        this.lawyer = value;
+      },
+      error: err => {
+
+      }
+    })
+  }
+
+
+  protected readonly localStorage = localStorage;
 }

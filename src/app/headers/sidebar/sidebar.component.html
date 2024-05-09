@@ -16,8 +16,9 @@
         <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
       </button>
       <mat-menu #aboveMenu="matMenu" yPosition="above">
-
-        <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
+        @if(localStorage.getItem('role') == "LAWYER"){
+          <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
+        }
         <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
 
       </mat-menu>
