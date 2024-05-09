@@ -16,7 +16,6 @@ import {AddExpertiseFieldRequest} from "../../model/addExpertiseFieldRequest";
 })
 export class ExpertiseFieldFormComponent implements OnInit {
   expertiseFields: ExpertiseFieldResponse[] = [];
-  selectedExpertiseFields : ExpertiseFieldResponse[] = [];
   selected:string[]= []
   lawyer:LawyerResponse;
   lawyerId = "";
@@ -25,25 +24,24 @@ export class ExpertiseFieldFormComponent implements OnInit {
   }
 
   onSelectionChange(expertiseField: ExpertiseFieldResponse) {
-    const index = this.selectedExpertiseFields.indexOf(expertiseField);
+    const index = this.selected.indexOf(expertiseField.name);
     if (index === -1) {
-      this.selectedExpertiseFields.push(expertiseField);
       this.selected.push(expertiseField.name);
       let addExpertiseFieldRequest: AddExpertiseFieldRequest = {
         id: this.lawyerId,
         expertiseFieldIdList: [expertiseField.id]
       }
       this.addExpertiseField(addExpertiseFieldRequest);
+
     } else {
-      this.selectedExpertiseFields.splice(index, 1);
-      this.selected.splice(index, 1);
-      let addExpertiseFieldRequest: AddExpertiseFieldRequest = {
-        id: this.lawyerId,
-        expertiseFieldIdList: [expertiseField.id]
-      }
+        this.selected.splice(index, 1);
+        let addExpertiseFieldRequest: AddExpertiseFieldRequest = {
+          id: this.lawyerId,
+          expertiseFieldIdList: [expertiseField.id]
+        }
       this.removeExpertiseField(addExpertiseFieldRequest);
-    }
-    console.log(this.selectedExpertiseFields);
+      }
+    console.log("selected arrayı:",this.selected)
   }
 
   ngOnInit(): void {
@@ -64,7 +62,6 @@ export class ExpertiseFieldFormComponent implements OnInit {
       {
         next: value => {
          value.expertiseFieldResponseList.map(expertiseField => this.selected.push(expertiseField.name))
-          console.log(this.selectedExpertiseFields)
         },
         error: err => {
           console.log(err);
@@ -86,7 +83,6 @@ export class ExpertiseFieldFormComponent implements OnInit {
   removeExpertiseField(addExptertiseFieldRequest: AddExpertiseFieldRequest){
     this.lawyerService.removeExpertiseField(addExptertiseFieldRequest).subscribe({
       next: value => {
-        console.log(value)
       },
       error: err => {
         console.log(err);
