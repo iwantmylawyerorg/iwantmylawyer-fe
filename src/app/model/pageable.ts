@@ -1,7 +1,7 @@
 export interface Pageable{
   pageable: {
-    pageNumber: 0;
-    pageSize : 10;
+    pageNumber: number;
+    pageSize : number;
     sort: {
       empty: true;
       sorted: false;
@@ -12,10 +12,10 @@ export interface Pageable{
     unpaged: false;
   },
   last: true;
-  totalElements: 1;
-  totalPages: 1;
-  size: 10;
-  number: 0;
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
   sort: {
     empty: true;
     sorted: false;

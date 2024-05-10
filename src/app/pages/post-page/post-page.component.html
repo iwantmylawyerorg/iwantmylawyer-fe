@@ -1,4 +1,6 @@
 <div class="post-page">
   <app-sidebar/>
-  <app-ailawyer/>
+  @if(localStorage.getItem('acces_token')){
+    <app-ailawyer/>
+  }
 </div>

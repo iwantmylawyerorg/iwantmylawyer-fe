@@ -1,10 +1,27 @@
 <div class="home-page">
   <app-main-header/>
   <div class="text-area">
-      <h1>Law for Everyone!</h1>
-      <h2>Consult to AI Lawyer or Talk With Real Lawyers </h2>
-      <button routerLink="/signup">Get Started</button>
-      <p>Already have an account? <a routerLink="/login">log-in</a></p>
+      @if(isLoggedIn){
+        @if(role == 'LAWYER'){
+          <h1 class="mt-3">Welcome To IWantMyLawyer!</h1>
+          <h2>Good to see you again lawyer!</h2>
+          <button [routerLink]="['/lawyer-profile',localStorage.getItem('id')]">Go To Your Profile</button>
+        } @else if (role == 'LAWYER_UNCONFIRMED'){
+          <h2>Good to see you among us!</h2>
+          <h3>Activate your account from settings to be assigned as a lawyer!</h3>
+        }@else{
+          <h1>Law for Everyone!</h1>
+          <h2>Consult to AI Lawyer or Talk With Real Lawyers </h2>
+        }
+      }@else{
+        <h1>Law for Everyone!</h1>
+        <h2>Consult to AI Lawyer or Talk With Real Lawyers </h2>
+        <button routerLink="/signup">Get Started</button>
+        <p>Already have an account? <a routerLink="/login">log-in</a></p>
+      }
+
   </div>
-  <app-ailawyer/>
+  @if(isLoggedIn){
+    <app-ailawyer/>
+  }
 </div>

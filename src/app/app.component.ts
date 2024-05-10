@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
@@ -11,7 +11,9 @@ import {LoginPageComponent} from "./pages/login-page/login-page.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent{
   title = 'iwantmylawyerfe';
+
+
 
 }

@@ -8,7 +8,9 @@
   overflow-y: hidden;
 }
 
-
+.logo:hover{
+  cursor: pointer;
+}
 .sidenav {
   width: 200px;
   border: none;

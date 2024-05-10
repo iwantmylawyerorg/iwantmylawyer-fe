@@ -39,6 +39,7 @@ import {LawyerService} from "../../services/lawyer.service";
 export class SidebarComponent implements OnInit{
   faHeart = faBars;
   lawyer:LawyerResponse;
+  role = "";
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -78,6 +79,7 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     this.getLawyerId()
     this.getLawyerById();
+    this.role = localStorage.getItem('role');
   }
 
   protected readonly localStorage = localStorage;

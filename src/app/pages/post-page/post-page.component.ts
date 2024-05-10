@@ -19,4 +19,5 @@ import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
 })
 export class PostPageComponent {
   faHeart = faHeart;
+  protected readonly localStorage = localStorage;
 }

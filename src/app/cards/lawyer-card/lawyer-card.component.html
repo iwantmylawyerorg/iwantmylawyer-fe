@@ -39,7 +39,9 @@
                 <h4 class="card-title mt-0 "><a
                   class="text-dark-emphasis text-decoration-none">{{ lawyer.firstName }} {{ lawyer.lastName }}</a></h4>
                 <p><i class="ri-map-pin-2-line"></i>{{ lawyer.baroKayitIl?.name }}</p>
-                <p><i class="ri-phone-line"></i>{{ lawyer.contactTelephoneNo }}</p>
+                @if(lawyer.contactTelephoneNo ){
+                  <p><i class="ri-phone-line"></i>{{ lawyer.contactTelephoneNo }}</p>
+                }
               </div>
               <div class="card-footer">
                 <div class="media">
@@ -53,9 +55,9 @@
       }
 
     </div>
-    <mat-paginator [length]="100"
+    <mat-paginator [length]="lawyerGetAll.totalElements"
                    [pageIndex]="pageIndex"
-                   [pageSize]="10"
+                   [pageSize]="pageSize"
                    (page)="onPageChange($event)"
                    aria-label="Select page">
     </mat-paginator>

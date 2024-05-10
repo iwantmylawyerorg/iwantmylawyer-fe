@@ -35,7 +35,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './lawyer-card.component.css'
 })
 export class LawyerCardComponent implements OnInit{
-  lawyerGetAll: LawyerGetAllResponse = {content:[]};
+  lawyerGetAll: LawyerGetAllResponse = {content:[],totalElements:0};
   step = 0;
   pageIndex = 0;
   pageSize = 10;
@@ -66,6 +66,8 @@ export class LawyerCardComponent implements OnInit{
       .subscribe({
         next: value => {
           this.lawyerGetAll.content = [...value.content]
+          this.lawyerGetAll.totalElements = value.totalElements;
+          console.log(value);
         },
         error: err => {
           console.log(err);

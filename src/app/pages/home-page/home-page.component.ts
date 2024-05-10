@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {RouterLink} from "@angular/router";
 import {MainHeaderComponent} from "../../headers/main-header/main-header.component";
@@ -15,6 +15,15 @@ import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
+    role = "";
+    isLoggedIn = false;
+    protected readonly localStorage = localStorage;
 
+  ngOnInit(): void {
+    this.role = localStorage.getItem('role');
+    if(localStorage.getItem('acces_token')){
+      this.isLoggedIn = true;
+    }
+  }
 }

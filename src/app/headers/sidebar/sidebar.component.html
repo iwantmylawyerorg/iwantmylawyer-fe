@@ -3,15 +3,25 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar><img src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
+    <mat-toolbar><img class="logo" routerLink="" src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
     <mat-nav-list style="margin-top: 70px; color:white; ">
-        <a mat-list-item href="#">HOME</a>
-        <a mat-list-item href="#">LAWYERS</a>
-        <a mat-list-item href="#">POST</a>
-        <a mat-list-item href="#">LOGIN</a>
-        <a mat-list-item href="#">SIGNUP</a>
+        <a mat-list-item routerLink="">HOME</a>
+        <a mat-list-item routerLink="/lawyers">LAWYERS</a>
+        <a mat-list-item routerLink="/posts">POST</a>
+        @if(localStorage.getItem('acces_token')){
+          @if(role == 'LAWYER'){
+            <a mat-list-item [routerLink]="['/lawyer-profile',lawyerId]">PROFILE</a>
+          } @else if (role != 'CLIENT'){
+            <a mat-list-item routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
+          }
+          <a mat-list-item routerLink="">LOGOUT</a>
+        } @else {
+          <a mat-list-item routerLink="/login">LOGIN</a>
+          <a mat-list-item routerLink="/signup">SIGNUP</a>
+        }
+
     </mat-nav-list>
-    @if(getLawyerId()){
+    @if(localStorage.getItem('role') != 'CLIENT'){
       <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
         <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
       </button>

@@ -9,5 +9,5 @@ export interface LawyerGetAllResponse {
     lawyerPhoto: string;
     baroKayitIl: City;
   }[];
-
+  totalElements:number
 }

@@ -2,8 +2,18 @@
     <a routerLink="/posts">POSTS</a>
     <a routerLink="/lawyers">LAWYERS</a>
     <img class="logo" alt="iwantmylawyer-logo" src="../../../assets/IwantMyLawyerLogo.png" routerLink="" />
-    <a routerLink="/login">LOG IN</a>
-    <a routerLink="/signup">SIGN UP</a>
+    @if(localStorage.getItem('acces_token')){
+      @if(role != 'CLIENT'){
+        <a routerLink="/lawyer-edit-profile/activate-account" >SETTINGS</a>
+      } @else if (role == 'CLIENT'){
+        <a routerLink="">HOME</a>
+      }
+      <a routerLink="">LOGOUT</a>
+    } @else {
+      <a routerLink="/login">LOG IN</a>
+      <a routerLink="/signup">SIGN UP</a>
+    }
+
     <button class="hamburger" (click)="handleHam()" [ngClass]="{'active': hamActive}">
       <div class="bar"></div>
     </button>
