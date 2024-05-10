@@ -3,8 +3,18 @@
   <div class="container link-holder text-end">
     <a routerLink="/posts">POSTS</a>
     <a routerLink="/lawyers">LAWYERS</a>
-    <a routerLink="/login">LOG IN</a>
-    <a routerLink="/signup">SIGN UP</a>
+    @if(localStorage.getItem('acces_token')){
+      @if(localStorage.getItem('role') == 'LAWYER'){
+        <a [routerLink]="['/lawyer-profile',localStorage.getItem('id')]">PROFILE</a>
+      }
+      @if (localStorage.getItem('role') != 'CLIENT'){
+        <a routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
+      }
+      <a routerLink="">LOGOUT</a>
+    }@else{
+      <a routerLink="/login">LOG IN</a>
+      <a routerLink="/signup">SIGN UP</a>
+    }
      </div>
   <button class="hamburger" (click)="handleHam()" [ngClass]="{'active': hamActive}">
     <div class="bar"></div>
@@ -15,11 +25,24 @@
       <nav class= "mobile-page-nav">
         <li><a routerLink="/posts">POSTS</a></li>
         <li><a routerLink="/lawyers">LAWYERS</a></li>
+        @if(localStorage.getItem('acces_token')){
+          @if(localStorage.getItem('role') == 'LAWYER'){
+            <li><a [routerLink]="['/lawyer-profile',localStorage.getItem('id')]">PROFILE</a></li>
+          }
+          @if (localStorage.getItem('role') != 'CLIENT'){
+            <li><a routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a></li>
+          }
+        }
       </nav>
       <hr class = 'slider-hr'/>
       <nav class = 'mobile-auth-nav'>
-        <li><a routerLink="/signup">SIGN UP</a></li>
-        <li><a routerLink="/login">LOGIN</a></li>
+        @if(localStorage.getItem('acces_token')){
+          <li><a routerLink="">LOGOUT</a></li>
+        }@else{
+          <li><a routerLink="/signup">SIGN UP</a></li>
+          <li><a routerLink="/login">LOGIN</a></li>
+        }
+
       </nav>
       <img class='slider-logo' alt='iwantmylawyer-logo' src='../../../assets/IwantMyLawyerLogo.png' />
     </div>

@@ -13,14 +13,19 @@
       <a mat-list-item routerLink="common-questions">COMMON QUESTIONS</a>
       <a mat-list-item routerLink="articles">ARTICLES</a>
     </mat-nav-list>
-    @if(lawyerId){
+    @if(role =='LAWYER'){
       <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
         <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
       </button>
       <mat-menu #aboveMenu="matMenu" yPosition="above">
-        @if(localStorage.getItem('role') == "LAWYER"){
-          <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
-        }
+        <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
+        <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
+      </mat-menu>
+    } @else if (role == 'LAWYER_UNCONFIRMED'){
+      <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
+        <img src="assets/default_lawyer_pic.jpeg" class="image--cover">
+      </button>
+      <mat-menu #aboveMenu="matMenu" yPosition="above">
         <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
       </mat-menu>
     }

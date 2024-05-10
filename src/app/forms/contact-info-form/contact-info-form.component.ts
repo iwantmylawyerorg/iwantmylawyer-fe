@@ -39,15 +39,16 @@ export class ContactInfoFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.lawyerId = localStorage.getItem('id')
+    this.getLawyer();
     this.updateLawyerForm = this.fb.group({
       id:[this.lawyerId],
-      contactEmail: [' '],
+      contactEmail: [this.lawyer?.contactEmail, [Validators.email]],
       contactTelNo: [' '],
       contactFaceBookUrl: [' '],
       contactInstagramUrl: [' '],
       contactTwitterUrl: [' '],
     })
-    this.getLawyer();
+
   }
 
   getLawyer(){
@@ -55,8 +56,6 @@ export class ContactInfoFormComponent implements OnInit{
       {
         next: value => {
           this.lawyer= value;
-          console.log(value);
-          console.log(this.lawyer.email)
         },
         error: err => {
           console.log(err);

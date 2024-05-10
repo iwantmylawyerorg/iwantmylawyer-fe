@@ -53,6 +53,7 @@ import {LawyerResponse} from "../../model/laywerResponse";
 })
 export class SettingsSidebarComponent implements OnInit {
   faHeart = faBars;
+  role = "";
   lawyerId = "";
   lawyer:LawyerResponse;
 
@@ -66,6 +67,7 @@ export class SettingsSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.lawyerId = localStorage.getItem('id');
+    this.role = localStorage.getItem('role');
     this.getLawyerById();
   }
 
