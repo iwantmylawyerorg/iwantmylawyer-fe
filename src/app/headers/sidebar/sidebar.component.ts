@@ -1,13 +1,13 @@
 import {Component, inject, OnInit} from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {AsyncPipe} from '@angular/common';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {MatMenuModule} from "@angular/material/menu";
@@ -16,6 +16,8 @@ import {MatCardModule} from "@angular/material/card";
 import {AILawyerComponent} from "../../ailawyer/ailawyer.component";
 import {LawyerResponse} from "../../model/laywerResponse";
 import {LawyerService} from "../../services/lawyer.service";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {CreatePostDialogComponent} from "../../create-post-dialog/create-post-dialog.component";
 
 @Component({
   selector: 'app-sidebar',
@@ -33,12 +35,14 @@ import {LawyerService} from "../../services/lawyer.service";
     FaIconComponent,
     MatMenuModule,
     RouterLink,
-    AILawyerComponent
+    AILawyerComponent,
+    MatDialogModule,
   ]
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   faHeart = faBars;
-  lawyer:LawyerResponse;
+  lawyer: LawyerResponse;
+  lawyerId: string;
   role = "";
 
   private breakpointObserver = inject(BreakpointObserver);
@@ -49,18 +53,24 @@ export class SidebarComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private router:Router , private lawyerService: LawyerService) {
+  constructor(private router: Router, private lawyerService: LawyerService,public dialog:MatDialog) {
   }
-  lawyerId:string;
 
-  getLawyerId(){
-    if(localStorage.getItem("acces_token")){
+  openDialog() {
+    const dialogRef = this.dialog.open(CreatePostDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  getLawyerId() {
+    if (localStorage.getItem("acces_token")) {
       // @ts-ignore
       this.lawyerId = localStorage.getItem("id")
 
       return true;
-    }
-    else{
+    } else {
       return false
     }
   }
@@ -68,9 +78,9 @@ export class SidebarComponent implements OnInit{
   getLawyerById() {
     this.lawyerService.getLawyer(this.lawyerId).subscribe({
       next: value => {
-        this.lawyer= value;
+        this.lawyer = value;
       },
-      error:err => {
+      error: err => {
 
       }
     })

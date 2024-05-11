@@ -11,6 +11,7 @@
         @if(localStorage.getItem('acces_token')){
           @if(role == 'LAWYER'){
             <a mat-list-item [routerLink]="['/lawyer-profile',lawyerId]">PROFILE</a>
+            <button mat-button (click)="openDialog()"><i class="ri-add-circle-line"></i>Create Post</button>
           } @else if (role != 'CLIENT'){
             <a mat-list-item routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
           }
