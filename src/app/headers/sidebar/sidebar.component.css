@@ -73,8 +73,10 @@
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
+}
+.like-count{
+  margin: auto 0
 }
 
 .postimage {
@@ -93,6 +95,10 @@
 mat-card {
   margin: 20px !important;
   width: fit-content;
+}
+
+.active {
+  color: green; /* veya başka bir renk */
 }
 
 

@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgClass, NgStyle} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -18,6 +18,8 @@ import {LawyerResponse} from "../../model/laywerResponse";
 import {LawyerService} from "../../services/lawyer.service";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CreatePostDialogComponent} from "../../create-post-dialog/create-post-dialog.component";
+import {PostService} from "../../services/post.service";
+import {PostResponse} from "../../model/postResponse";
 
 @Component({
   selector: 'app-sidebar',
@@ -37,13 +39,24 @@ import {CreatePostDialogComponent} from "../../create-post-dialog/create-post-di
     RouterLink,
     AILawyerComponent,
     MatDialogModule,
+    NgStyle,
+    NgClass,
   ]
 })
 export class SidebarComponent implements OnInit {
   faHeart = faBars;
+  posts:PostResponse= {content:[],totalElements:0};
   lawyer: LawyerResponse;
   lawyerId: string;
   role = "";
+  page = 0;
+  size = 20;
+
+  isLiked: boolean = false;
+
+  toggleLike() {
+    this.isLiked = !this.isLiked;
+  }
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -53,7 +66,7 @@ export class SidebarComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private router: Router, private lawyerService: LawyerService,public dialog:MatDialog) {
+  constructor(private router: Router, private lawyerService: LawyerService,public dialog:MatDialog,private postService: PostService) {
   }
 
   openDialog() {
@@ -75,6 +88,22 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  getAllPosts(){
+    this.postService.getAllPosts(this.page,this.size).subscribe(
+      {
+        next: value => {
+          this.posts.content = [...this.posts.content,...value.content];
+          this.posts.totalElements = value.totalElements;
+          console.log(value);
+        }
+        ,error: err => {
+          console.log(err);
+        }
+      }
+    )
+
+  }
+
   getLawyerById() {
     this.lawyerService.getLawyer(this.lawyerId).subscribe({
       next: value => {
@@ -89,6 +118,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getLawyerId()
     this.getLawyerById();
+    this.getAllPosts();
     this.role = localStorage.getItem('role');
   }
 

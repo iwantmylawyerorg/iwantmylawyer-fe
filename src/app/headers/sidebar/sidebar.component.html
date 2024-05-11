@@ -50,27 +50,37 @@
         </button>
       }
       <div class="container posts">
-        <div class="row justify-content-center">
-          <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>Shiba Inu</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <img class="postimage" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-              </p>
-            </mat-card-content>
-            <mat-card-actions >
+        @for(post of posts?.content ; track post.id){
+          <div class="row justify-content-center">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(data:image/jpg;base64,' + post?.lawyerResponseWithPost.lawyerPhoto + ')'}"></div>
+                <mat-card-title>{{post.lawyerResponseWithPost?.name}} {{post.lawyerResponseWithPost?.lastName}}</mat-card-title>
+                <mat-card-subtitle>Lawyer</mat-card-subtitle>
+              </mat-card-header>
+              @if(post?.postPhoto){
+                <img class="postimage" mat-card-image [src]="'data:image/jpg;base64,'+ post?.postPhoto" alt="postphoto">
+              }
 
-              <button mat-button><fa-icon class="icon" [icon]="faHeart"></fa-icon>LIKE</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
+              <mat-card-content>
+                <p>
+                    {{post.text}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions >
+                <div class="container d-inline-flex">
+                  <button mat-icon-button color="warn" (click)="toggleLike()" aria-label="Example icon button with a heart icon">
+                    <mat-icon >{{ isLiked ? 'favorite_border' : 'favorite'  }}</mat-icon>
+                  </button>
+                    <p class="like-count">
+                    {{post.likeResponseList?.length}}
+                    </p>
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        }
+
       </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

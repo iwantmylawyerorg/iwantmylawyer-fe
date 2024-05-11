@@ -16,5 +16,8 @@ export const Constant: any = {
   REMOVE_EXPERTISE_FIELD: "/api/v1/lawyer/removeExpertiseField",
   CREATE_COMMON_QUESTION: "/api/v1/commonquestion",
   DELETE_COMMON_QUESTION: "/api/v1/commonquestion/",
-  CREATE_ADDRESS : "/api/v1/address"
+  CREATE_ADDRESS : "/api/v1/address",
+  CREATE_POST : "/api/v1/post",
+  ADD_POST_PHOTO : "/api/v1/post/addPostPhoto/",
+  GET_ALL_POSTS:"/api/v1/post/"
 }

@@ -1,17 +1,19 @@
 <h2 mat-dialog-title>Create A New Post</h2>
 <mat-dialog-content class="mat-typography">
+  <form [formGroup]="postFormGroup" >
   <mat-form-field class="form-field">
     <mat-label>Textarea</mat-label>
-    <textarea class="text" maxlength="200" matInput #textareaElement></textarea>
+    <textarea formControlName="text" class="text" maxlength="200" matInput #textareaElement></textarea>
     <mat-hint align="end">{{ textareaElement.value.length }} / 200 characters</mat-hint>
   </mat-form-field>
   <p>select a post photo</p>
   <div class="input-group mb-3">
-    <input  type="file" class="form-control" id="inputGroupFile02">
+    <input type="file" class="form-control" (change)="onChange($event)" id="inputGroupFile02">
   </div>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Send</button>
+  <button (click)="createPost()"  mat-button [mat-dialog-close]="true" cdkFocusInitial>Send</button>
 </mat-dialog-actions>
 
