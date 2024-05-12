@@ -4,9 +4,6 @@
   height: 100%;
   background-color: #DFD5C6;
 }
-.content{
-  overflow-y: hidden;
-}
 .create-post-btn{
   font-size: 18px;
   font-weight: bold;
@@ -74,6 +71,10 @@
 
 .example-header-image {
   background-size: cover;
+  background-position: center;
+}
+.example-header-image:hover {
+  cursor: pointer;
 }
 .like-count{
   margin: auto 0
@@ -83,9 +84,11 @@
   margin-bottom: 20px;
   border-radius: 5px;
 }
+.content{
+  overflow: auto;
+}
 
 .posts {
-  overflow: scroll;
   max-height: 100%;
   min-width: 100%;
   background-color: #DFD5C6;

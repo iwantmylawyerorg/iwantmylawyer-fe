@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {AsyncPipe, NgClass, NgStyle} from '@angular/common';
+import {AsyncPipe, DatePipe, formatDate, NgClass, NgStyle} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -50,7 +50,7 @@ export class SidebarComponent implements OnInit {
   lawyerId: string;
   role = "";
   page = 0;
-  size = 20;
+  size = 2;
 
   isLiked: boolean = false;
 
@@ -76,6 +76,31 @@ export class SidebarComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  private loadInitialPosts() {
+    this.getAllPosts();
+    this.setupScrollListener();
+  }
+  private setupScrollListener() {
+    const container = document.querySelector('.content');
+    if (container) {
+      container.addEventListener('scroll', () => {
+        const scrollTop = Math.ceil(container.scrollTop);
+        const scrollHeight = container.scrollHeight || container.scrollHeight;
+        const clientHeight = container.clientHeight || container.clientHeight;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight;
+
+        if (isAtBottom) {
+          this.loadMorePosts();
+        }
+      });
+    }
+  }
+  private loadMorePosts() {
+    if (this.posts.content.length < this.posts.totalElements) {
+      this.page++;
+      this.getAllPosts();
+    }
+  }
 
   getLawyerId() {
     if (localStorage.getItem("acces_token")) {
@@ -94,7 +119,6 @@ export class SidebarComponent implements OnInit {
         next: value => {
           this.posts.content = [...this.posts.content,...value.content];
           this.posts.totalElements = value.totalElements;
-          console.log(value);
         }
         ,error: err => {
           console.log(err);
@@ -118,7 +142,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getLawyerId()
     this.getLawyerById();
-    this.getAllPosts();
+    this.loadInitialPosts();
     this.role = localStorage.getItem('role');
   }
 

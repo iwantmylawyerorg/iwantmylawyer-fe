@@ -1,4 +1,13 @@
 .form-field {
   width: 100%;
 }
+.mat-typography{
+  width: 50vw;
+}
+
+@media screen and (max-width: 800px) {
+    .mat-typography{
+      width: 100%;
+    };
+}
 

@@ -54,9 +54,9 @@
           <div class="row justify-content-center">
             <mat-card class="example-card">
               <mat-card-header>
-                <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(data:image/jpg;base64,' + post?.lawyerResponseWithPost.lawyerPhoto + ')'}"></div>
+                <div mat-card-avatar [routerLink]="['/lawyer-profile',post.lawyerResponseWithPost?.id]" class="example-header-image" [ngStyle]="{'background-image': 'url(data:image/jpg;base64,' + post?.lawyerResponseWithPost.lawyerPhoto + ')'}"></div>
                 <mat-card-title>{{post.lawyerResponseWithPost?.name}} {{post.lawyerResponseWithPost?.lastName}}</mat-card-title>
-                <mat-card-subtitle>Lawyer</mat-card-subtitle>
+                <mat-card-subtitle>{{post.localDateTime?.toString().substring(0,10)}} / {{post.localDateTime?.toString().substring(11,16)}}</mat-card-subtitle>
               </mat-card-header>
               @if(post?.postPhoto){
                 <img class="postimage" mat-card-image [src]="'data:image/jpg;base64,'+ post?.postPhoto" alt="postphoto">
@@ -69,8 +69,8 @@
               </mat-card-content>
               <mat-card-actions >
                 <div class="container d-inline-flex">
-                  <button mat-icon-button color="warn" (click)="toggleLike()" aria-label="Example icon button with a heart icon">
-                    <mat-icon >{{ isLiked ? 'favorite_border' : 'favorite'  }}</mat-icon>
+                  <button mat-icon-button color="warn" [disabled]="post.lawyerResponseWithPost?.id == lawyerId"  (click)="toggleLike()" aria-label="Example icon button with a heart icon">
+                    <mat-icon >{{ isLiked ?  'favorite' : 'favorite_border'}}</mat-icon>
                   </button>
                     <p class="like-count">
                     {{post.likeResponseList?.length}}
