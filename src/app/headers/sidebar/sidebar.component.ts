@@ -20,6 +20,8 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CreatePostDialogComponent} from "../../create-post-dialog/create-post-dialog.component";
 import {PostService} from "../../services/post.service";
 import {PostResponse} from "../../model/postResponse";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {LikeService} from "../../services/like.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -41,21 +43,29 @@ import {PostResponse} from "../../model/postResponse";
     MatDialogModule,
     NgStyle,
     NgClass,
+    InfiniteScrollModule,
   ]
 })
 export class SidebarComponent implements OnInit {
   faHeart = faBars;
-  posts:PostResponse= {content:[],totalElements:0};
+  posts: PostResponse = {content: [], totalElements: 0};
   lawyer: LawyerResponse;
   lawyerId: string;
+  userId: string;
   role = "";
   page = 0;
   size = 2;
+  isVisible = false;
 
   isLiked: boolean = false;
 
-  toggleLike() {
+  toggleLike(postId:string) {
     this.isLiked = !this.isLiked;
+    if(this.isLiked){
+      this.createLike(postId)
+    }else{
+
+    }
   }
 
   private breakpointObserver = inject(BreakpointObserver);
@@ -66,7 +76,11 @@ export class SidebarComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private router: Router, private lawyerService: LawyerService,public dialog:MatDialog,private postService: PostService) {
+  constructor(private router: Router,
+              private lawyerService: LawyerService,
+              public dialog: MatDialog,
+              private postService: PostService,
+              private likeService:LikeService) {
   }
 
   openDialog() {
@@ -76,29 +90,18 @@ export class SidebarComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
   private loadInitialPosts() {
     this.getAllPosts();
-    this.setupScrollListener();
+    this.onScroll();
   }
-  private setupScrollListener() {
-    const container = document.querySelector('.content');
-    if (container) {
-      container.addEventListener('scroll', () => {
-        const scrollTop = Math.ceil(container.scrollTop);
-        const scrollHeight = container.scrollHeight || container.scrollHeight;
-        const clientHeight = container.clientHeight || container.clientHeight;
-        const isAtBottom = scrollTop + clientHeight >= scrollHeight;
 
-        if (isAtBottom) {
-          this.loadMorePosts();
-        }
-      });
-    }
-  }
-  private loadMorePosts() {
+  onScroll() {
     if (this.posts.content.length < this.posts.totalElements) {
       this.page++;
       this.getAllPosts();
+    } else {
+      this.isVisible = true;
     }
   }
 
@@ -113,19 +116,30 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  getAllPosts(){
-    this.postService.getAllPosts(this.page,this.size).subscribe(
+  getAllPosts() {
+    this.postService.getAllPosts(this.page, this.size).subscribe(
       {
         next: value => {
-          this.posts.content = [...this.posts.content,...value.content];
+          this.posts.content = [...this.posts.content, ...value.content];
           this.posts.totalElements = value.totalElements;
         }
-        ,error: err => {
+        , error: err => {
           console.log(err);
         }
       }
     )
 
+  }
+
+  createLike(postId:string) {
+    let createLikeRequest = Object.assign({}, {userId: this.userId,postId});
+    this.likeService.createLike(createLikeRequest).subscribe({
+      next: value => {
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
   getLawyerById() {
@@ -144,6 +158,7 @@ export class SidebarComponent implements OnInit {
     this.getLawyerById();
     this.loadInitialPosts();
     this.role = localStorage.getItem('role');
+    this.userId = localStorage.getItem('id');
   }
 
   protected readonly localStorage = localStorage;

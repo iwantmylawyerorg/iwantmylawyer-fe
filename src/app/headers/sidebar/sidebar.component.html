@@ -39,7 +39,7 @@
       </mat-menu>
     }
   </mat-sidenav>
-  <mat-sidenav-content class="content">
+  <mat-sidenav-content infinite-scroll  (scrolled)="onScroll()"  class="content">
       @if (isHandset$ | async) {
         <button
           type="button"
@@ -69,7 +69,7 @@
               </mat-card-content>
               <mat-card-actions >
                 <div class="container d-inline-flex">
-                  <button mat-icon-button color="warn" [disabled]="post.lawyerResponseWithPost?.id == lawyerId"  (click)="toggleLike()" aria-label="Example icon button with a heart icon">
+                  <button mat-icon-button color="warn" [disabled]="post.lawyerResponseWithPost?.id == lawyerId"  (click)="toggleLike(post.id)" aria-label="Example icon button with a heart icon">
                     <mat-icon >{{ isLiked ?  'favorite' : 'favorite_border'}}</mat-icon>
                   </button>
                     <p class="like-count">
@@ -80,8 +80,8 @@
             </mat-card>
           </div>
         }
-
       </div>
+      <p class="text-center" [ngStyle]="{'display': isVisible ? 'block' : 'none'}" >No more posts are loaded</p>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
