@@ -22,6 +22,7 @@ import {PostService} from "../../services/post.service";
 import {PostResponse} from "../../model/postResponse";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {LikeService} from "../../services/like.service";
+import {LikeResponse} from "../../model/likeResponse";
 
 @Component({
   selector: 'app-sidebar',
@@ -54,18 +55,12 @@ export class SidebarComponent implements OnInit {
   userId: string;
   role = "";
   page = 0;
-  size = 2;
+  size = 5;
   isVisible = false;
 
-  isLiked: boolean = false;
 
-  toggleLike(postId:string) {
-    this.isLiked = !this.isLiked;
-    if(this.isLiked){
-      this.createLike(postId)
-    }else{
-
-    }
+  isLiked(likeResponseList: LikeResponse[], userId: string): boolean {
+    return likeResponseList.some(like => like.userResponse.id === userId);
   }
 
   private breakpointObserver = inject(BreakpointObserver);
@@ -121,6 +116,7 @@ export class SidebarComponent implements OnInit {
       {
         next: value => {
           this.posts.content = [...this.posts.content, ...value.content];
+          console.log(value);
           this.posts.totalElements = value.totalElements;
         }
         , error: err => {
@@ -162,4 +158,33 @@ export class SidebarComponent implements OnInit {
   }
 
   protected readonly localStorage = localStorage;
+
+  sendLike(postId: string) {
+    this.likeService.createLike({postId: postId,userId:this.userId}).subscribe({
+      next: value => {
+
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+  deleteLike(likeId:string){
+    this.likeService.deleteLike(likeId).subscribe(
+      {
+        next: value => {},
+        error: error => {
+          console.log(error);
+        }
+      })
+  }
+
+  handleClick(postId:string,likeResponseList: LikeResponse[]) {
+    if (this.isLiked(likeResponseList, this.userId)) {
+      console.log('Unlike post');
+    } else {
+      this.sendLike(postId);
+      console.log('Like post');
+    }
+  }
 }

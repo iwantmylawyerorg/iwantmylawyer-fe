@@ -69,8 +69,14 @@
               </mat-card-content>
               <mat-card-actions >
                 <div class="container d-inline-flex">
-                  <button mat-icon-button color="warn" [disabled]="post.lawyerResponseWithPost?.id == lawyerId"  (click)="toggleLike(post.id)" aria-label="Example icon button with a heart icon">
-                    <mat-icon >{{ isLiked ?  'favorite' : 'favorite_border'}}</mat-icon>
+                  <button (click)="handleClick(post.id,post.likeResponseList)" mat-icon-button color="warn" [disabled]="post.lawyerResponseWithPost?.id == userId"  aria-label="Example icon button with a heart icon">
+                    <mat-icon>
+                      @if(isLiked(post.likeResponseList, userId)){
+                        favorite
+                      }@else{
+                        favorite_border
+                      }
+                    </mat-icon>
                   </button>
                     <p class="like-count">
                     {{post.likeResponseList?.length}}

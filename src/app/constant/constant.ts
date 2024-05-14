@@ -20,5 +20,6 @@ export const Constant: any = {
   CREATE_POST : "/api/v1/post",
   ADD_POST_PHOTO : "/api/v1/post/addPostPhoto/",
   GET_ALL_POSTS:"/api/v1/post/",
-  CREATE_LIKE: "/api/v1/like"
+  CREATE_LIKE: "/api/v1/like",
+  DELETE_LIKE: "/api/v1/like/"
 }

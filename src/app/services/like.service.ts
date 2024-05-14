@@ -15,4 +15,7 @@ export class LikeService {
   createLike(likeRequest:LikeRequest){
     return this.http.post(Constant.CREATE_LIKE , likeRequest);
   }
+  deleteLike(likeId:string){
+    return this.http.delete(Constant.DELETE_LIKE+likeId);
+  }
 }
