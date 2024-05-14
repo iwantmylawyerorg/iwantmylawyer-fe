@@ -1,0 +1,40 @@
+.container{
+  max-width: 800px;
+}
+.article-text{
+  width: 100%;
+  min-height: 300px;
+}
+
+.example-form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.h4{
+  margin-top: 50px;
+}
+.icon{
+  margin-left: 180px;
+}
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-around;
+  align-items: center;
+}
+.example-headers-align .mat-expansion-panel-header-title {
+  justify-content: space-around;
+  align-items: center;
+}
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+.example-button-container {
+  width: 100%;
+  justify-content: space-around;
+}
+.btn-custom{
+  border: 1px solid black;
+}
