@@ -7,6 +7,9 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 18px; }
 
+.card > img {
+  height: 200px;
+}
 .page-wrapper {
   display: block;
   width: 100%; }

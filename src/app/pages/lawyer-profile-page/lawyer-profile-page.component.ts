@@ -6,7 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {LawyerService} from "../../services/lawyer.service";
 import {LawyerResponse} from "../../model/laywerResponse";
 
@@ -40,6 +40,7 @@ interface ExampleFlatNode {
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
+    RouterLink,
   ],
   templateUrl: './lawyer-profile-page.component.html',
   styleUrl: './lawyer-profile-page.component.css'

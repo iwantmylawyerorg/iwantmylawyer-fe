@@ -24,5 +24,6 @@ export const Constant: any = {
   DELETE_LIKE: "/api/v1/like/",
   CREATE_ARTICLE: "/api/v1/article",
   DELETE_ARTICLE: "/api/v1/article/",
-  ADD_ARTICLE_PHOTO: "/api/v1/article/"
+  ADD_ARTICLE_PHOTO: "/api/v1/article/",
+  GET_ARTICLE: "/api/v1/article/"
 }

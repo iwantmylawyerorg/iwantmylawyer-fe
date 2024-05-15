@@ -1,0 +1,20 @@
+<div class="article-page">
+  <app-responsive-header/>
+  <div class="article-holder">
+    <div class="container">
+      <div class="article-content">
+        <h1 class="text-h"> {{ article.header }} </h1>
+        <h4 class="text-sub"></h4>
+        @if (article?.photo) {
+          <img class="image-img1" [src]="'data:image/jpg;base64,'+ article?.photo" alt="article_photo"/>
+        }
+        <p class="text-p">
+            {{article.text}}
+        </p>
+        <div class=clearfix>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

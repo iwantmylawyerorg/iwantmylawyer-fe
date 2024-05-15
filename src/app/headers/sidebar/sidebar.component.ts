@@ -59,10 +59,6 @@ export class SidebarComponent implements OnInit {
   isVisible = false;
 
 
-  isLiked(likeResponseList: LikeResponse[], userId: string): boolean {
-    return likeResponseList.some(like => like.userResponse.id === userId);
-  }
-
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -99,6 +95,9 @@ export class SidebarComponent implements OnInit {
       this.isVisible = true;
     }
   }
+  isLiked(likeResponseList: LikeResponse[], userId: string): boolean {
+    return likeResponseList.some(like => like.userResponse.id === userId);
+  }
 
   getLawyerId() {
     if (localStorage.getItem("acces_token")) {
@@ -124,18 +123,6 @@ export class SidebarComponent implements OnInit {
         }
       }
     )
-
-  }
-
-  createLike(postId:string) {
-    let createLikeRequest = Object.assign({}, {userId: this.userId,postId});
-    this.likeService.createLike(createLikeRequest).subscribe({
-      next: value => {
-      },
-      error: error => {
-        console.log(error);
-      }
-    });
   }
 
   getLawyerById() {
@@ -162,15 +149,14 @@ export class SidebarComponent implements OnInit {
   sendLike(postId: string) {
     this.likeService.createLike({postId: postId,userId:this.userId}).subscribe({
       next: value => {
-
       },
       error: error => {
         console.log(error);
       }
     })
   }
-  deleteLike(likeId:string){
-    this.likeService.deleteLike(likeId).subscribe(
+  deleteLike(postId:string,userId:string){
+    this.likeService.deleteLike(postId,userId).subscribe(
       {
         next: value => {},
         error: error => {
@@ -181,10 +167,9 @@ export class SidebarComponent implements OnInit {
 
   handleClick(postId:string,likeResponseList: LikeResponse[]) {
     if (this.isLiked(likeResponseList, this.userId)) {
-      console.log('Unlike post');
+      this.deleteLike(postId,this.userId)
     } else {
       this.sendLike(postId);
-      console.log('Like post');
     }
   }
 }

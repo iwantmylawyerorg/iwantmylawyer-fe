@@ -4,6 +4,7 @@ import {CreatePostRequest} from "../model/createPostRequest";
 import {PostIdResponse} from "../model/postIdResponse";
 import {Constant} from "../constant/constant";
 import {CreateArticleRequest} from "../model/createArticleRequest";
+import {ArticleResponse} from "../model/articleResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,8 @@ export class ArticleService {
   }
   deleteArticle(id:string) {
     return this.http.delete(Constant.DELETE_ARTICLE + id);
+  }
+  getArticle(id:string) {
+    return this.http.get<ArticleResponse>(Constant.GET_ARTICLE + id);
   }
 }

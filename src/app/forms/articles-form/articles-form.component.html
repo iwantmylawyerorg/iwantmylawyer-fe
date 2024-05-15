@@ -20,10 +20,10 @@
           </mat-form-field>
         </div>
         <div class="container mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label custom-label">About Me</label>
+          <label for="exampleFormControlTextarea1" class="form-label custom-label"></label>
           <textarea  class="article-text form-control" formControlName="text" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <p>select a post photo</p>
+        <p>select a article photo</p>
         <div class="input-group mb-3">
           <input type="file" class="form-control" (change)="onChange($event)" id="inputGroupFile02">
         </div>
@@ -41,9 +41,11 @@
       <div class="row">
         @for (article of lawyer?.articleResponseList; track article.id) {
           <div class="col-md-4 mb-4 d-flex justify-content-center">
-            <div class="card" style="width: 15rem;">
-              @if(imageFile != null){
-                <img [src]="'data:image/jpg;base64,'+ article?.photo" class="card-img-top" alt="...">
+            <div  class="card" style="width: 15rem;">
+              @if(article?.photo != null){
+                <img [routerLink]="['/article',article.id]" [src]="'data:image/jpg;base64,'+ article?.photo" class="card-img-top" alt="...">
+              }@else{
+                <img [routerLink]="['/article',article.id]" src="assets/article_default.jpeg" class="card-img-top" alt="...">
               }
               <div class="card-body">
                 <div class="example-button-container container text-center">

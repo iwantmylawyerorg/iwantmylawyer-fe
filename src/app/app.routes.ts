@@ -16,6 +16,7 @@ import {ExpertiseFieldFormComponent} from "./forms/expertise-field-form/expertis
 import {CommonQuestionsFormComponent} from "./forms/common-questions-form/common-questions-form.component";
 import {ArticlesFormComponent} from "./forms/articles-form/articles-form.component";
 import {AddressFormComponent} from "./forms/address-form/address-form.component";
+import {ArticlePageComponent} from "./pages/article-page/article-page.component";
 
 
 
@@ -37,5 +38,6 @@ export const routes: Routes = [
       {path:'common-questions',component:CommonQuestionsFormComponent},
       {path:'articles',component:ArticlesFormComponent}
     ]},
+  {path: 'article/:id',component: ArticlePageComponent},
   {path: '**',redirectTo: ''},
 ];

@@ -59,9 +59,11 @@
           <div class="row">
             @for (article of lawyer?.articleResponseList; track article.id) {
               <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="card" style="width: 15rem;">
+                <div [routerLink]="['/article',article.id]" class="card" style="width: 15rem;">
                   @if(article?.photo != null){
-                    <img [src]="'data:image/jpg;base64,'+ article?.photo" class="card-img-top" alt="...">
+                    <img  alt="articleimg" [src]="'data:image/jpg;base64,'+ article?.photo" class="card-img-top" >
+                  }@else{
+                    <img  alt="articleimg" src="assets/article_default.jpeg" class="card-img-top">
                   }
                   <div class="card-body">
                     <p class="card-text">{{article.header}}</p>

@@ -8,19 +8,21 @@ import {LawyerService} from "../../services/lawyer.service";
 import {LawyerResponse} from "../../model/laywerResponse";
 import {ArticleService} from "../../services/article.service";
 import {MatButtonModule} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-articles-form',
   standalone: true,
-    imports: [
-      ReactiveFormsModule,
-      FormsModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatExpansionModule,
-      MatIconModule,
-      MatButtonModule
-    ],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './articles-form.component.html',
   styleUrl: './articles-form.component.css'
 })
