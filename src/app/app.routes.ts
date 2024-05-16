@@ -15,7 +15,6 @@ import {ContactInfoFormComponent} from "./forms/contact-info-form/contact-info-f
 import {ExpertiseFieldFormComponent} from "./forms/expertise-field-form/expertise-field-form.component";
 import {CommonQuestionsFormComponent} from "./forms/common-questions-form/common-questions-form.component";
 import {ArticlesFormComponent} from "./forms/articles-form/articles-form.component";
-import {AddressFormComponent} from "./forms/address-form/address-form.component";
 import {ArticlePageComponent} from "./pages/article-page/article-page.component";
 import {AdminPageComponent} from "./pages/admin-page/admin-page.component";
 import {ManageUsersSectionComponent} from "./pages/manage-users-section/manage-users-section.component";
@@ -35,7 +34,6 @@ export const routes: Routes = [
       {path:'activate-account',component:LawyerCredentialsStepperComponent},
       {path:'about-me',component:AboutMeFormComponent},
       {path:'contact-info',component:ContactInfoFormComponent},
-      {path:'address',component:AddressFormComponent},
       {path:'expertise-fields',component:ExpertiseFieldFormComponent},
       {path:'common-questions',component:CommonQuestionsFormComponent},
       {path:'articles',component:ArticlesFormComponent}

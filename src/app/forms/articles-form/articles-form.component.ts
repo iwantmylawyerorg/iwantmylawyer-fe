@@ -9,6 +9,7 @@ import {LawyerResponse} from "../../model/laywerResponse";
 import {ArticleService} from "../../services/article.service";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-articles-form',
@@ -43,7 +44,7 @@ export class ArticlesFormComponent implements OnInit{
     })
   }
 
-  constructor(private lawyerService:LawyerService, private fb: FormBuilder, private articleService:ArticleService) {
+  constructor(private lawyerService:LawyerService, private fb: FormBuilder, private articleService:ArticleService,private toastr: ToastrService) {
   }
   onChange(event: any) {
     this.imageFile = event.target.files[0];
@@ -58,11 +59,10 @@ export class ArticlesFormComponent implements OnInit{
           if (this.imageFile !=null){
             this.articleService.addPhoto(value.id,this.imageFile).subscribe({
               next: value => {
-                console.log(value)
 
               },
               error: error => {
-                console.log(error);
+                this.toastr.error("Something went wrong! Please try again!");
               }
             })
           }

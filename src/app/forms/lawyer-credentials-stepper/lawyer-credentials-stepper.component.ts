@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ViewChild} from '@angular/core';
 import {
   MatStep,
   MatStepLabel,
@@ -17,6 +17,7 @@ import {MatInputModule} from "@angular/material/input";
 import {AsyncPipe} from "@angular/common";
 import {ActivateAccountService} from "../../services/activate-account.service";
 import {AddressService} from "../../services/address.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-lawyer-credentials-stepper',
@@ -35,6 +36,7 @@ import {AddressService} from "../../services/address.service";
   styleUrl: './lawyer-credentials-stepper.component.css'
 })
 export class LawyerCredentialsStepperComponent implements OnInit {
+  @ViewChild('stepper') stepper!: MatStepper
   private breakpointObserver = inject(BreakpointObserver);
   addressFormGroup!:FormGroup;
   lawyerId = "";
@@ -52,13 +54,14 @@ export class LawyerCredentialsStepperComponent implements OnInit {
     breakpointObserver: BreakpointObserver,
     private activateAccountService: ActivateAccountService,
     private addressService: AddressService,
+    private toastr:ToastrService
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
   }
 
-  protected readonly localStorage = localStorage;
+
 
 
   ngOnInit(): void {
@@ -85,10 +88,11 @@ export class LawyerCredentialsStepperComponent implements OnInit {
       let id = localStorage.getItem("id");
       this.activateAccountService.addAvukatKartPhoto(id, value).subscribe({
         next: value => {
-
+          this.toastr.success("You have successfully uploaded your lawyer card photo!")
+          this.stepper.next();
         },
         error: error => {
-          console.log(error);
+          this.toastr.error("Something went wrong! Please try again.")
         }
       })
 
@@ -98,10 +102,11 @@ export class LawyerCredentialsStepperComponent implements OnInit {
       let id = localStorage.getItem("id");
       this.activateAccountService.addTcPhoto(id, value).subscribe({
         next: value => {
-
+          this.toastr.success("You have successfully uploaded your lawyer card photo!")
+          this.stepper.next();
         },
         error: error => {
-          console.log(error);
+          this.toastr.error("Something went wrong! Please try again.")
         }
       })
   }
@@ -110,10 +115,11 @@ export class LawyerCredentialsStepperComponent implements OnInit {
     let id = localStorage.getItem("id");
     this.activateAccountService.addLawyerPhoto(id, value).subscribe({
       next: value => {
-
+        this.toastr.success("You have successfully uploaded your lawyer card photo!")
+        this.stepper.next();
       },
       error: error => {
-        console.log(error);
+        this.toastr.error("Something went wrong! Please try again.")
       }
     })
   }
@@ -124,13 +130,15 @@ export class LawyerCredentialsStepperComponent implements OnInit {
       this.addressService.createAddress(addressRequest).subscribe(
         {
           next: value => {
-
+            this.toastr.success("You have successfully uploaded address!")
+            this.stepper.next();
           },
           error: error => {
-            console.log(error);
+            this.toastr.error("Something went wrong! Please try again.")
           }
         }
       )
     }
   }
+  protected readonly localStorage = localStorage;
 }

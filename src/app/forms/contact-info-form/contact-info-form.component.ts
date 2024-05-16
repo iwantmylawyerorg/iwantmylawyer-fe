@@ -42,7 +42,7 @@ export class ContactInfoFormComponent implements OnInit{
     this.getLawyer();
     this.updateLawyerForm = this.fb.group({
       id:[this.lawyerId],
-      contactEmail: [this.lawyer?.contactEmail, [Validators.email]],
+      contactEmail: [this.lawyer?.contactEmail || ' ', [Validators.email]],
       contactTelNo: [' '],
       contactFaceBookUrl: [' '],
       contactInstagramUrl: [' '],
@@ -68,10 +68,11 @@ export class ContactInfoFormComponent implements OnInit{
       let request = Object.assign({},this.updateLawyerForm.value);
       this.lawyerService.updateSocialContactInfo(request).subscribe({
         next: value => {
-
+          this.toastr.success("Your contact info have been successfully updated!");
+          this.updateLawyerForm.reset();
         },
         error: err => {
-          console.log(err);
+          this.toastr.error("Something went wrong!");
         }
       })
     }

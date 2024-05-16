@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AboutmeService} from "../../services/aboutme.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-about-me-form',
@@ -14,7 +15,7 @@ import {AboutmeService} from "../../services/aboutme.service";
 export class AboutMeFormComponent implements OnInit {
   aboutMeForm!: FormGroup;
 
-  constructor(private aboutmeService: AboutmeService,private fb: FormBuilder) { }
+  constructor(private aboutmeService: AboutmeService,private fb: FormBuilder,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.aboutMeForm = this.fb.group({
@@ -28,10 +29,11 @@ export class AboutMeFormComponent implements OnInit {
       let id = localStorage.getItem("id");
       this.aboutmeService.updateAboutMe(id,aboutMe).subscribe({
         next: value => {
-          console.log(value);
+          this.toastr.success("Your about me has been successfully updated!");
+          this.aboutMeForm.reset();
         },
         error: (error) => {
-          console.log(error);
+          this.toastr.error("Something went wrong! Please try again.");
         }
       })
 

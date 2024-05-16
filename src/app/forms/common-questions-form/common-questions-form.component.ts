@@ -12,6 +12,7 @@ import {CommonQuestionResponse} from "../../model/commonQuestionResponse";
 import {LawyerResponse} from "../../model/laywerResponse";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -38,7 +39,7 @@ export class CommonQuestionsFormComponent implements OnInit{
       })
   }
 
-  constructor(private fb: FormBuilder, private lawyerService: LawyerService, private commonquestionsService:CommonquestionsService) {
+  constructor(private fb: FormBuilder, private lawyerService: LawyerService, private commonquestionsService:CommonquestionsService,private toastr:ToastrService) {
 
   }
 
@@ -49,7 +50,7 @@ export class CommonQuestionsFormComponent implements OnInit{
           this.getLawyer();
         },
         error: error => {
-          console.log(error);
+          this.toastr.error("Error deleting Common Question");
         }
       }
     )
@@ -66,7 +67,7 @@ export class CommonQuestionsFormComponent implements OnInit{
             this.getLawyer();
           },
           error: err => {
-            console.log(err);
+            this.toastr.error("Error creating common question");
           }
         }
       )
