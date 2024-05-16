@@ -131,6 +131,7 @@ export class LawyerCredentialsStepperComponent implements OnInit {
         {
           next: value => {
             this.toastr.success("You have successfully uploaded address!")
+            this.addressFormGroup.reset();
             this.stepper.next();
           },
           error: error => {
