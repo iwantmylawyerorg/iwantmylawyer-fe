@@ -15,7 +15,7 @@
           } @else if (role != 'CLIENT'){
             <a mat-list-item routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
           }
-          <a mat-list-item routerLink="">LOGOUT</a>
+          <a mat-list-item (click)="logout()" >LOGOUT</a>
         } @else {
           <a mat-list-item routerLink="/login">LOGIN</a>
           <a mat-list-item routerLink="/signup">SIGNUP</a>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgClass} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatListItem} from "@angular/material/list";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-main-header',
@@ -23,10 +24,17 @@ export class MainHeaderComponent implements OnInit{
     this.hamActive = !this.hamActive;
   }
 
-    protected readonly localStorage = localStorage;
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
   }
+  logout(){
+    this.authService.getLogout();
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
+  protected readonly localStorage = localStorage;
 
 }

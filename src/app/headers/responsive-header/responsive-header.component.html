@@ -10,7 +10,7 @@
       @if (localStorage.getItem('role') != 'CLIENT'){
         <a routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
       }
-      <a routerLink="">LOGOUT</a>
+      <a routerLink="" (click)="logout()"  >LOGOUT</a>
     }@else{
       <a routerLink="/login">LOG IN</a>
       <a routerLink="/signup">SIGN UP</a>
@@ -37,7 +37,7 @@
       <hr class = 'slider-hr'/>
       <nav class = 'mobile-auth-nav'>
         @if(localStorage.getItem('acces_token')){
-          <li><a routerLink="">LOGOUT</a></li>
+          <li><a routerLink="" (click)="logout()">LOGOUT</a></li>
         }@else{
           <li><a routerLink="/signup">SIGN UP</a></li>
           <li><a routerLink="/login">LOGIN</a></li>

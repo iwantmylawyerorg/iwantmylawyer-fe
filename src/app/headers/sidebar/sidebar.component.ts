@@ -23,6 +23,7 @@ import {PostResponse} from "../../model/postResponse";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {LikeService} from "../../services/like.service";
 import {LikeResponse} from "../../model/likeResponse";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -71,7 +72,8 @@ export class SidebarComponent implements OnInit {
               private lawyerService: LawyerService,
               public dialog: MatDialog,
               private postService: PostService,
-              private likeService:LikeService) {
+              private likeService:LikeService,
+              private authService: AuthService) {
   }
 
   openDialog() {
@@ -99,11 +101,14 @@ export class SidebarComponent implements OnInit {
     return likeResponseList.some(like => like.userResponse.id === userId);
   }
 
+  logout(){
+    this.authService.getLogout();
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
   getLawyerId() {
     if (localStorage.getItem("acces_token")) {
-      // @ts-ignore
       this.lawyerId = localStorage.getItem("id")
-
       return true;
     } else {
       return false

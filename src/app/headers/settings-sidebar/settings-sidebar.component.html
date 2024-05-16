@@ -11,7 +11,7 @@
       <a mat-list-item routerLink="expertise-fields">EXPERTISE FIELDS</a>
       <a mat-list-item routerLink="common-questions">COMMON QUESTIONS</a>
       <a mat-list-item routerLink="articles">ARTICLES</a>
-      <a mat-list-item routerLink="articles">LOGOUT</a>
+      <a mat-list-item (click)="logout()" >LOGOUT</a>
 
     </mat-nav-list>
     @if(role =='LAWYER'){

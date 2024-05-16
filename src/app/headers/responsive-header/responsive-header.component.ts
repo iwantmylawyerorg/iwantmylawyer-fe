@@ -1,7 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {NgClass} from "@angular/common";
 import {MatListItem} from "@angular/material/list";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-responsive-header',
@@ -22,9 +23,16 @@ export class ResponsiveHeaderComponent{
   handleHam() {
     this.hamActive = !this.hamActive;
   }
+  constructor(private authService: AuthService, private router: Router) {
+  }
   @HostListener('window:scroll', ['$event'])
   checkScroll():void{
     this.isSticky = window.scrollY > 30;
+  }
+  logout(){
+    this.authService.getLogout();
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
   protected readonly localStorage = localStorage;

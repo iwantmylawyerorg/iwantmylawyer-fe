@@ -14,4 +14,7 @@ export class AuthService {
   getAuthenticate(authenticateRequest: AuthenticateRequest) {
     return this.http.post<AuthenticateResponse>(Constant.AUTH,authenticateRequest);
   }
+  getLogout(){
+    return this.http.get<void>(Constant.GET_LOGOUT);
+  }
 }

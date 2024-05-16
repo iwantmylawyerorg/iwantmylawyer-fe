@@ -12,7 +12,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map, shareReplay} from "rxjs/operators";
 import {MatInput} from "@angular/material/input";
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {ContactInfoFormComponent} from "../../forms/contact-info-form/contact-info-form.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {
@@ -22,6 +22,7 @@ import {AboutMeFormComponent} from "../../forms/about-me-form/about-me-form.comp
 import {ExpertiseFieldFormComponent} from "../../forms/expertise-field-form/expertise-field-form.component";
 import {LawyerService} from "../../services/lawyer.service";
 import {LawyerResponse} from "../../model/laywerResponse";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-settings-sidebar',
@@ -71,7 +72,13 @@ export class SettingsSidebarComponent implements OnInit {
     this.getLawyerById();
   }
 
-  constructor(private lawyerService: LawyerService) {
+  constructor(private lawyerService: LawyerService,private authService: AuthService,private router: Router) {
+  }
+
+  logout(){
+    this.authService.getLogout();
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
   getLawyerById() {
