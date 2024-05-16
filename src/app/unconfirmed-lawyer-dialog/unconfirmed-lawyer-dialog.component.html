@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Unconfirmed Lawyer Info</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <p>First Name: {{unconfirmedLawyer?.firstName}} </p>
+        </div>
+        <div class="col-md-4">
+          <p>Last Name : {{unconfirmedLawyer?.lastName}}</p>
+        </div>
+        <div class="col-md-4">
+          <p>Baro Sicil No : {{unconfirmedLawyer?.baroSicilNo}}</p>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <p>Lawyer Photo: <img alt="lawyer-photo" [src]="'data:image/jpg;base64,'+ unconfirmedLawyer?.lawyerPhoto"/> </p>
+        </div>
+        <div class="col-md-4">
+          <p>Lawyer Card Photo: <img alt="lawyer-photo" [src]="'data:image/jpg;base64,'+ unconfirmedLawyer?.avukatKartPhoto"/> </p>
+        </div>
+        <div class="col-md-4">
+          <p>Tc Photo: <img alt="lawyer-photo" [src]="'data:image/jpg;base64,'+ unconfirmedLawyer?.tcPhoto"/> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Tc No : {{unconfirmedLawyer?.tcNo}}</p>
+        </div>
+        <div class="col-md-6">
+          <p>Adress : {{ unconfirmedLawyer?.addressResponse?.city }}/
+            {{ unconfirmedLawyer?.addressResponse?.state }}/{{ unconfirmedLawyer?.addressResponse?.street }}/
+            {{ unconfirmedLawyer?.addressResponse?.alley }}/
+            {{ unconfirmedLawyer?.addressResponse?.postalCode }}</p>
+        </div>
+      </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="approveLawyer()" >Approve</button>
+</mat-dialog-actions>
+

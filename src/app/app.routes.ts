@@ -17,6 +17,8 @@ import {CommonQuestionsFormComponent} from "./forms/common-questions-form/common
 import {ArticlesFormComponent} from "./forms/articles-form/articles-form.component";
 import {AddressFormComponent} from "./forms/address-form/address-form.component";
 import {ArticlePageComponent} from "./pages/article-page/article-page.component";
+import {AdminPageComponent} from "./pages/admin-page/admin-page.component";
+import {ManageUsersSectionComponent} from "./pages/manage-users-section/manage-users-section.component";
 
 
 
@@ -39,5 +41,9 @@ export const routes: Routes = [
       {path:'articles',component:ArticlesFormComponent}
     ]},
   {path: 'article/:id',component: ArticlePageComponent},
+  {path: 'admin',component: AdminPageComponent,
+    children:[
+      {path:'manage-users',component:ManageUsersSectionComponent},
+    ]},
   {path: '**',redirectTo: ''},
 ];

@@ -6,6 +6,7 @@ import {LawyerResponse} from "../model/laywerResponse";
 import {LawyerGetAllResponse} from "../model/lawyerGetAllResponse";
 import {UpdateSocialContactInfoRequest} from "../model/updateSocialContactInfoRequest";
 import {AddExpertiseFieldRequest} from "../model/addExpertiseFieldRequest";
+import {UnconfirmedLawyerResponse} from "../model/unconfirmedLawyerResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class LawyerService {
   getLawyer(id: string) {
     return this.http.get<LawyerResponse>(Constant.GET_LAWYER+`${id}`)
   }
+  getUnconfirmedLawyer(id: string) {
+    return this.http.get<UnconfirmedLawyerResponse>(Constant.GET_UNCONFIRMED_LAWYER+id);
+  }
   getAllLawyers(page:number,size:number,firstName:string,lastName:string,city:string) {
     return this.http.get<LawyerGetAllResponse>(Constant.GET_ALL_LAWYER +
       `${page}`+"/"
@@ -28,6 +32,9 @@ export class LawyerService {
       +`${firstName}`+"/"
       +`${lastName}`+"/"
       +`${city}`)
+  }
+  getAllUnconfirmedLawyers(page:number,size:number) {
+    return this.http.get<LawyerGetAllResponse>(Constant.GET_ALL_UNCONFIRMED_LAWYER+page+"/"+size);
   }
   updateSocialContactInfo(updateSocialContactInfoRequest: UpdateSocialContactInfoRequest) {
     return this.http.put<void>(Constant.UPDATE_SOCIAL_CONTACT_INFO,updateSocialContactInfoRequest);
@@ -37,5 +44,9 @@ export class LawyerService {
   }
   removeExpertiseField(addExpertiseFieldRequest: AddExpertiseFieldRequest){
     return this.http.put<void>(Constant.REMOVE_EXPERTISE_FIELD,addExpertiseFieldRequest);
+  }
+  addRoleToLawyer(id: string) {
+    let formData = new FormData();
+    return this.http.put<void>(Constant.ADD_ROLE_TO_LAWYER+id,formData);
   }
 }

@@ -1,0 +1,19 @@
+<div class="container manage-users text-center">
+  @if(lawyerGetAll.totalElements == 0){
+    <p>There are no unconfirmed lawyers.</p>
+  }@else{
+    <mat-list role="list">
+      @for (lawyer of lawyerGetAll.content ; track lawyer.id){
+        <mat-list-item (click)="openDialog(lawyer.id)" role="listitem"><div class="container item text-center align-content-center">{{lawyer.firstName}} {{lawyer.lastName}}</div></mat-list-item>
+        <mat-divider></mat-divider>
+      }
+
+    </mat-list>
+  }
+  <mat-paginator [length]="lawyerGetAll.totalElements"
+                 [pageIndex]="page"
+                 [pageSize]="size"
+                 (page)="onPageChange($event)"
+                 aria-label="Select page">
+  </mat-paginator>
+</div>

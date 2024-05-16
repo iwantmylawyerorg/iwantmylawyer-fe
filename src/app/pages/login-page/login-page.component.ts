@@ -25,6 +25,7 @@ export class LoginPageComponent implements OnInit{
   authenticationForm!: FormGroup;
 
 
+
   constructor(private authService: AuthService,private fb: FormBuilder,
               private router: Router,private toastr: ToastrService) {
   }
@@ -46,7 +47,12 @@ export class LoginPageComponent implements OnInit{
           localStorage.setItem("role",value.userResponse.role);
           localStorage.setItem("id",value.userResponse.id);
           this.toastr.success("WELCOME")
-          this.router.navigate(['']);
+          if(value.userResponse.role == "ADMIN"){
+            this.router.navigate(['admin/manage-users']);
+          }else{
+            this.router.navigate(['']);
+          }
+
         },
         error: (error) => {
           if(error.status === 403){
