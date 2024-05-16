@@ -149,6 +149,10 @@ export class SidebarComponent implements OnInit {
   sendLike(postId: string) {
     this.likeService.createLike({postId: postId,userId:this.userId}).subscribe({
       next: value => {
+        const likedPost = this.posts.content.find(post => post.id === postId);
+        if (likedPost) {
+          likedPost.likeResponseList.push({id:"",localDateTime:new Date(), userResponse: { id: this.userId,email:"",firstName:"",lastName:"",role:"" }});
+        }
       },
       error: error => {
         console.log(error);
@@ -158,7 +162,15 @@ export class SidebarComponent implements OnInit {
   deleteLike(postId:string,userId:string){
     this.likeService.deleteLike(postId,userId).subscribe(
       {
-        next: value => {},
+        next: value => {
+          const postIndex = this.posts.content.findIndex(post => post.id === postId);
+          if (postIndex !== -1) {
+            const deletedLikeIndex = this.posts.content[postIndex].likeResponseList.findIndex(like => like.userResponse.id === userId);
+            if (deletedLikeIndex !== -1) {
+              this.posts.content[postIndex].likeResponseList.splice(deletedLikeIndex, 1);
+            }
+          }
+        },
         error: error => {
           console.log(error);
         }
