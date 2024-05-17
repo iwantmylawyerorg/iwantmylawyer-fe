@@ -1,10 +1,10 @@
 <mat-sidenav-container class="sidenav-container sidebar">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav d-flex" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar><img class="logo" routerLink="" src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
-    <mat-nav-list style="margin-top: 70px; color:white; ">
+    <mat-nav-list class="d-flex" style="margin-top: 70px; color:white; ">
         <a mat-list-item routerLink="">HOME</a>
         <a mat-list-item routerLink="/lawyers">LAWYERS</a>
         <a mat-list-item routerLink="/posts">POST</a>
@@ -15,29 +15,28 @@
           } @else if (role != 'CLIENT'){
             <a mat-list-item routerLink="/lawyer-edit-profile/activate-account">SETTINGS</a>
           }
-          <a mat-list-item (click)="logout()" >LOGOUT</a>
+          <a mat-list-item class="mb-auto" (click)="logout()" >LOGOUT</a>
         } @else {
           <a mat-list-item routerLink="/login">LOGIN</a>
           <a mat-list-item routerLink="/signup">SIGNUP</a>
         }
-
+      @if(role =='LAWYER'){
+        <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
+          <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
+        </button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
+          <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
+        </mat-menu>
+      } @else if (role == 'LAWYER_UNCONFIRMED'){
+        <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
+          <img src="assets/default_lawyer_pic.jpeg" class="image--cover">
+        </button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
+        </mat-menu>
+      }
     </mat-nav-list>
-    @if(role =='LAWYER'){
-      <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
-        <img [src]="'data:image/jpg;base64,'+ lawyer?.lawyerPhoto" class="image--cover">
-      </button>
-      <mat-menu #aboveMenu="matMenu" yPosition="above">
-        <button [routerLink]="['/lawyer-profile',lawyerId]" mat-menu-item >Profile</button>
-        <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
-      </mat-menu>
-    } @else if (role == 'LAWYER_UNCONFIRMED'){
-      <button mat-button class="wrapper" [matMenuTriggerFor]="aboveMenu">
-        <img src="assets/default_lawyer_pic.jpeg" class="image--cover">
-      </button>
-      <mat-menu #aboveMenu="matMenu" yPosition="above">
-        <button routerLink="/lawyer-edit-profile/activate-account" mat-menu-item>Settings</button>
-      </mat-menu>
-    }
   </mat-sidenav>
   <mat-sidenav-content infinite-scroll  (scrolled)="onScroll()"  class="content">
       @if (isHandset$ | async) {

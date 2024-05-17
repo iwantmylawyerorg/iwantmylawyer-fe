@@ -8,6 +8,7 @@ import {MatError, MatFormField, MatLabel, MatPrefix, MatSuffix} from "@angular/m
 import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
+import {createPasswordStrengthValidator} from "../../validators/passwordValidator";
 
 @Component({
   selector: 'app-client-sign-up-form',
@@ -45,7 +46,7 @@ export class ClientSignUpFormComponent implements OnInit{
   ngOnInit(): void {
     this.clientForm = this.fb.group({
       email: ['',[Validators.required,Validators.email]],
-      password: ['',Validators.required],
+      password: ['',[Validators.required,Validators.maxLength(30),Validators.minLength(8),createPasswordStrengthValidator()]],
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],
       telephoneNo: ['',Validators.required],

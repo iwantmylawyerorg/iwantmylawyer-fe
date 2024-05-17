@@ -32,6 +32,18 @@
           <mat-form-field class="input-container">
             <mat-label>Enter your password</mat-label>
             <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+            @if (lawyerForm.get('password')?.hasError('maxlength') && !lawyerForm.get('password')?.hasError('required')) {
+              <mat-error>Password must be under 30 characters long!</mat-error>
+            }
+            @if (lawyerForm.get('password')?.hasError('minlength') && !lawyerForm.get('password')?.hasError('required')) {
+              <mat-error>Password must be over 8 characters long!</mat-error>
+            }
+            @if (lawyerForm.get('password')?.hasError('passwordStrength') && !lawyerForm.get('password')?.hasError('required')) {
+              <mat-error> Upper case and special characters required!</mat-error>
+            }
+            @if (lawyerForm.get('password')?.hasError('required')) {
+              <mat-error>Password is <strong>required</strong></mat-error>
+            }
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -50,7 +62,7 @@
       <div class="col-md-6 align-content-center">
         <mat-form-field class="input-container" hintLabel="Max 11 characters">
           <mat-label>Enter Tc No</mat-label>
-          <input formControlName="tcNo" matInput #input maxlength="11">
+          <input formControlName="tcNo" matInput #input minlength="11" maxlength="11">
           <mat-hint align="end">{{input.value.length}}/11</mat-hint>
         </mat-form-field>
       </div>
@@ -59,7 +71,7 @@
       <div class="col-md-6">
         <mat-form-field class="input-container" hintLabel="Max 5 characters">
           <mat-label>Enter Bar No</mat-label>
-          <input formControlName="baroSicilNo" matInput #barono maxlength="5">
+          <input formControlName="baroSicilNo" matInput #barono minlength="5" maxlength="5">
           <mat-hint align="end">{{barono.value.length}}/5</mat-hint>
         </mat-form-field>
       </div>

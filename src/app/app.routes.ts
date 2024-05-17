@@ -3,7 +3,6 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
 import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
 import {LawyersPageComponent} from "./pages/lawyers-page/lawyers-page.component";
-import {SidebarComponent} from "./headers/sidebar/sidebar.component";
 import {LawyerEditProfilePageComponent} from "./pages/lawyer-edit-profile-page/lawyer-edit-profile-page.component";
 import {PostPageComponent} from "./pages/post-page/post-page.component";
 import {LawyerProfilePageComponent} from "./pages/lawyer-profile-page/lawyer-profile-page.component";
@@ -18,6 +17,9 @@ import {ArticlesFormComponent} from "./forms/articles-form/articles-form.compone
 import {ArticlePageComponent} from "./pages/article-page/article-page.component";
 import {AdminPageComponent} from "./pages/admin-page/admin-page.component";
 import {ManageUsersSectionComponent} from "./pages/manage-users-section/manage-users-section.component";
+import {AddressFormComponent} from "./forms/address-form/address-form.component";
+import {authenticationGuard} from "./guards/authentication.guard";
+import {adminGuard} from "./guards/admin.guard";
 
 
 
@@ -29,17 +31,18 @@ export const routes: Routes = [
   {path:'posts', component: PostPageComponent},
   {path:'lawyers',component: LawyersPageComponent},
   {path:'lawyer-profile/:id',component: LawyerProfilePageComponent},
-  {path:'lawyer-edit-profile',component: LawyerEditProfilePageComponent,
+  {path:'lawyer-edit-profile',component: LawyerEditProfilePageComponent,canActivate:[authenticationGuard],
     children:[
       {path:'activate-account',component:LawyerCredentialsStepperComponent},
       {path:'about-me',component:AboutMeFormComponent},
       {path:'contact-info',component:ContactInfoFormComponent},
       {path:'expertise-fields',component:ExpertiseFieldFormComponent},
       {path:'common-questions',component:CommonQuestionsFormComponent},
+      {path:'address',component:AddressFormComponent},
       {path:'articles',component:ArticlesFormComponent}
     ]},
   {path: 'article/:id',component: ArticlePageComponent},
-  {path: 'admin',component: AdminPageComponent,
+  {path: 'admin',component: AdminPageComponent,canActivate:[adminGuard],
     children:[
       {path:'manage-users',component:ManageUsersSectionComponent},
     ]},

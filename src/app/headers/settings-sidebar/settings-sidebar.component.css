@@ -1,9 +1,6 @@
 .sidenav-container {
   height: 100%;
 }
-.sidenav {
-  width: 210px;
-}
 
 .sidenav .mat-toolbar {
   background: inherit;
@@ -43,13 +40,23 @@
 .logo:hover{
   cursor: pointer;
 }
+mat-sidenav{
+  width: 210px;
+  height: 100%;
+  border: none;
+  display: flex;
+  justify-content: start;
+}
+
+mat-nav-list{
+  margin-bottom: auto; !important;
+  flex-direction: column;
+  height: 80vh;
+}
 
 .wrapper {
-  bottom: 0;
   padding: 0;
   width: 100%;
-  justify-self: end;
-  position: absolute;
   height: fit-content;
 }
 

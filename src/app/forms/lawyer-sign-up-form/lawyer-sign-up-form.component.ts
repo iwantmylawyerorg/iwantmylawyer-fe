@@ -3,7 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup, FormGroupDirective,
-  FormsModule,
+  FormsModule, MinValidator,
   NgForm,
   ReactiveFormsModule,
   Validators
@@ -19,6 +19,7 @@ import {LawyerService} from "../../services/lawyer.service";
 import {Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
+import {createPasswordStrengthValidator} from "../../validators/passwordValidator";
 
 
 @Component({
@@ -57,7 +58,7 @@ export class LawyerSignUpFormComponent implements OnInit{
     this.getAllCities();
     this.lawyerForm = this.fb.group({
       email: ['',[Validators.required,Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.maxLength(30),Validators.minLength(8),createPasswordStrengthValidator()]],
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],
       telephoneNo: ['',Validators.required],

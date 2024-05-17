@@ -32,6 +32,18 @@
         <mat-form-field class="input-container">
           <mat-label>Enter your password</mat-label>
           <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+          @if (clientForm.get('password')?.hasError('maxlength') && !clientForm.get('password')?.hasError('required')) {
+            <mat-error>Password must be under 30 characters long!</mat-error>
+          }
+          @if (clientForm.get('password')?.hasError('minlength') && !clientForm.get('password')?.hasError('required')) {
+            <mat-error>Password must be over 8 characters long!</mat-error>
+          }
+          @if (clientForm.get('password')?.hasError('passwordStrength') && !clientForm.get('password')?.hasError('required')) {
+            <mat-error>Upper case and special characters required!</mat-error>
+          }
+          @if (clientForm.get('password')?.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+          }
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
