@@ -49,7 +49,7 @@ mat-sidenav{
 }
 
 mat-nav-list{
-  margin-bottom: auto; !important;
+  margin-bottom: auto;
   flex-direction: column;
   height: 80vh;
 }

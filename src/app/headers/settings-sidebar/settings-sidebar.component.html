@@ -4,7 +4,7 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar><img alt="logo" routerLink="" class="logo" src="./assets/IwantMyLawyerLogo.png" width="100px" height="100px" style="margin-top: 100px;margin-left: 25px"></mat-toolbar>
-    <mat-nav-list class="d-flex" style="margin-top: 70px; color:white; ">
+    <mat-nav-list class="d-flex overflow-y-hidden" style="margin-top: 70px; color:white; ">
       <a mat-list-item routerLink="activate-account">ACTIVATE ACCOUNT</a>
       <a mat-list-item routerLink="about-me">ABOUT ME</a>
       <a mat-list-item routerLink="contact-info">CONTACT INFO</a>
