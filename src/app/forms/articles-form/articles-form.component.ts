@@ -59,7 +59,8 @@ export class ArticlesFormComponent implements OnInit{
           if (this.imageFile !=null){
             this.articleService.addPhoto(value.id,this.imageFile).subscribe({
               next: value => {
-
+                this.getLawyerById()
+                this.articleFormGroup.reset();
               },
               error: error => {
                 this.toastr.error("Something went wrong! Please try again!");
@@ -67,7 +68,8 @@ export class ArticlesFormComponent implements OnInit{
             })
           }
           else{
-            this.getLawyerById()
+            this.getLawyerById();
+            this.articleFormGroup.reset();
           }
         },
         error: error => {
