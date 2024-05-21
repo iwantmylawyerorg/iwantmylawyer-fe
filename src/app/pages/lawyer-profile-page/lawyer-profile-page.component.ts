@@ -93,6 +93,7 @@ export class LawyerProfilePageComponent implements OnInit,OnDestroy{
     this.lawyerService.getLawyer(this.lawyerId).subscribe({
       next: value => {
         this.lawyer= value;
+        console.log(value);
         value.expertiseFieldResponseList?.map(value1 => TREE_DATA[0].children.push({name:value1.name}));
         this.dataSource.data = TREE_DATA;
       },
