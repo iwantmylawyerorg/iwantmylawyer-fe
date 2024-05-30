@@ -60,6 +60,7 @@ export class CommonQuestionsFormComponent implements OnInit{
   createCommonQuestion(){
     if(this.commonQuestionsForm.valid){
       let createQuestionRequest = Object.assign({}, this.commonQuestionsForm.value);
+      createQuestionRequest.lawyerId = this.lawyerId
       console.log(createQuestionRequest)
       this.commonquestionsService.createCommonQuestion(createQuestionRequest).subscribe(
         {

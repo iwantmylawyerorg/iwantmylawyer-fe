@@ -126,6 +126,7 @@ export class LawyerCredentialsStepperComponent implements OnInit {
   createAddress(){
     if(this.addressFormGroup.valid){
       let addressRequest = Object.assign({},this.addressFormGroup.value)
+      addressRequest.lawyerId = this.lawyerId
       console.log(addressRequest);
       this.addressService.createAddress(addressRequest).subscribe(
         {

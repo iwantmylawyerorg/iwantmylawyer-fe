@@ -66,6 +66,7 @@ export class ContactInfoFormComponent implements OnInit{
   updateSocialContact(){
     if(this.updateLawyerForm.valid){
       let request = Object.assign({},this.updateLawyerForm.value);
+      request.id = this.lawyerId
       this.lawyerService.updateSocialContactInfo(request).subscribe({
         next: value => {
           this.toastr.success("Your contact info have been successfully updated!");
