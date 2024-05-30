@@ -52,7 +52,10 @@ export class ArticlesFormComponent implements OnInit{
 
   createArticle(){
     if(this.articleFormGroup.valid){
+
       let articleRequest = Object.assign({},this.articleFormGroup.value)
+        articleRequest.lawyerId = this.lawyerId
+      console.log(articleRequest.lawyerId)
       this.articleService.createArticle(articleRequest).subscribe({
         next: value => {
           console.log(value);

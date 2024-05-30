@@ -30,5 +30,6 @@ export const Constant: any = {
   DELETE_ARTICLE: "/api/v1/article/",
   ADD_ARTICLE_PHOTO: "/api/v1/article/",
   GET_ARTICLE: "/api/v1/article/",
-  GET_LOGOUT : "/api/v1/auth/logout"
+  GET_LOGOUT : "/api/v1/auth/logout",
+  GET_REFRESH_TOKEN: "/api/v1/auth/refresh-token"
 }
