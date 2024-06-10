@@ -22,12 +22,34 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
     Constant.GET_REFRESH_TOKEN,
 
   ]
-
-  for (const url in permitAll) {
-    if (req.url.includes("/api/v1/auth") && req.url.includes(url)) {
-      return next(req);
-    }
+  if (req.url.includes("/api/v1/auth")) {
+    return next(req);
   }
+  if (req.url.includes(Constant.REGISTER_CLIENT) &&req.method.toUpperCase() === "POST" ) {
+    return next(req);
+  }
+  if (req.url.includes(Constant.REGISTER_LAWYER) && req.method.toUpperCase() === "POST") {
+    return next(req);
+  }
+  if (req.url.includes(Constant.CITY)) {
+    return next(req);
+  }
+  if (req.url.includes(Constant.GET_LAWYER)&& req.method.toUpperCase() === "GET") {
+    return next(req);
+  }
+  if (req.url.includes(Constant.GET_ALL_LAWYER)&& req.method.toUpperCase() === "GET") {
+    return next(req);
+  }
+  if (req.url.includes(Constant.GET_ALL_POSTS) && req.method.toUpperCase() === "GET") {
+    return next(req);
+  }
+  if (req.url.includes(Constant.GET_ARTICLE) && req.method.toUpperCase() === "GET") {
+    return next(req);
+  }
+  if (req.url.includes(Constant.GET_REFRESH_TOKEN)) {
+    return next(req);
+  }
+
 
   if (req.url.includes(Constant.GET_LOGOUT)){
     const authReq = req.clone({
@@ -50,7 +72,6 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
       });
       return next(authReq);
     } else {
-      console.log("pompaaaaa")
       return from(authService.getJwtTokenByRefreshToken(refreshToken)).pipe(
         switchMap(newTokens => {
           const newAccessToken = newTokens.accessToken;

@@ -42,11 +42,11 @@ export class ContactInfoFormComponent implements OnInit{
     this.getLawyer();
     this.updateLawyerForm = this.fb.group({
       id:[this.lawyerId],
-      contactEmail: [this.lawyer?.contactEmail || ' ', [Validators.email]],
-      contactTelNo: [' '],
-      contactFaceBookUrl: [' '],
-      contactInstagramUrl: [' '],
-      contactTwitterUrl: [' '],
+      contactEmail: [this.lawyer?.contactEmail],
+      contactTelNo: [],
+      contactFaceBookUrl: [],
+      contactInstagramUrl: [],
+      contactTwitterUrl: [],
     })
 
   }
